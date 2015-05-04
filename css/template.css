@@ -1,0 +1,217 @@
+/* GLOBAL TAG CLASSES */
+
+body{
+  font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    float:left;
+    font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:16px;
+    font-weight:lighter;
+    color:#484747;
+    letter-spacing:1px;
+    margin:-2px 0px 0px 0px;
+    padding:0;
+    }
+
+h4 {
+    float:left;
+    font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size:13px;
+    font-weight:lighter;
+    color:#cccccc;
+    letter-spacing:2px;
+    margin:1px 0 0 5px;
+    padding:0;
+    }
+
+a { color:#478ea3; }
+
+li{
+  padding-bottom: 6px;
+}
+
+input, button{
+  margin-top:5px;
+}
+
+/* UI CONTROLS */
+
+#playerURLOptions{
+  /*position: relative;
+  left:5px;
+  top:-6px;*/
+  margin-left: 10px;
+}
+
+#comboLabel{
+  font-size: 12px;
+  color:#ccc;
+  height: 10px;
+  margin:0px 0px 0px 4px;
+}
+
+/* CONTENT CLASSES */
+
+#codeContent{
+  margin-top: 7px;
+  width:100%;
+  height:720px;
+  overflow: hidden;
+  /*background-color: cyan;*/
+}
+
+#playerArea{
+  position:relative;
+  width:640px;
+}
+
+#leftContent{
+  float:left;
+  width:60%;
+  height:100%;
+  font-size: 13px;
+}
+
+#rightContent{
+  width:40%;
+  height:100%;
+  float:right;
+  font-size:15px;
+  color:#686767;
+  letter-spacing:1px;
+}
+
+#rightContentControl{
+  width:100%;
+  height:100%;
+  font-size:12px;
+}
+
+#controlsHolder{
+  width:100%;
+  height:304px;
+  background-color: #0C1021;
+}
+
+#controlsHolder ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#controlsHolder ul li{
+  display: inline;
+}
+
+#controlsHolder ul li div{
+  font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  text-align: center;
+  padding: 14px 0px;
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+#controlsHolder ul li div:hover, #controlsHolder ul li div.active{
+  background-color:#004f9f;
+  border-bottom: 1px solid #013B8C;
+}
+
+#controlsHolder ul li div.launch:hover, #controlsHolder ul li div.changes{
+  padding: 13px 0px;
+  letter-spacing: 0px;
+  color: #000;
+  font-weight: 300;
+  background-color: #EC432D;  
+}
+
+.keywords{
+  list-style-type: circle;
+  margin: 0px;
+  padding: 0px 0px 0px 23px;
+}
+
+.instructions{
+  list-style-type: decimal;
+  margin: 0px;
+  padding: 0px 0px 0px 23px;
+}
+
+/* EDITOR'S CLASSES */
+
+#playerScriptEditor div.CodeMirror{
+  display: inline-block !important;
+}
+
+#playerScriptEditor .CodeMirror-vscrollbar{
+  overflow: hidden;
+}
+
+#codeEditor{
+  width:100%;
+  /*height:450px;*/
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+#playerScriptEditor{
+  width:100%;
+  height:40px;
+  padding-bottom:14px;
+}
+
+#htmlEditor{
+  width:100%;
+  height:150px;
+  margin-top:10px;
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+#finalCodeEditor{
+  width:100%;
+  height:700px;
+  margin-top:10px;
+  overflow: hidden;
+  position: relative;
+  top:16px; 
+}
+
+/* EDITOR'S Containers */
+
+#finalEditor{
+  display: none;
+}
+
+
+/* LAYOUT */
+
+.ui-layout-pane{
+  border:0px !important;
+}
+
+.ui-layout-resizer-sliding  .ui-layout-toggler {
+    display: none  !important;
+}
+
+.ui-layout-center{
+  padding: 0px !important;
+}
+
+.container-west, .editors .editorHolder {
+  background-color: #0C1021;
+}
+
+.container-west, .container-center{
+  padding: 0px  !important;
+  width: 100%;
+}
+
+div.ui-layout-west.ui-layout-pane.ui-layout-pane-west{
+  padding: 0px  !important;
+
+}
