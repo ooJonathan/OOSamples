@@ -1,0 +1,60 @@
+div.oo_start_button{
+	width:100px !important;
+	position:relative !important;
+	margin-left: -50px !important;
+	margin-top: -50px !important;
+	left:50% !important;
+	top:50% !important;
+	height:100px !important;
+	bottom:0px  !important;
+	
+}
+
+.oo_full_controls {
+	height: 33px !important;
+}
+
+#ooyalaplayer .oo_controls {
+    background: none repeat scroll 0 0 rgba(200, 200, 200, 0.65);
+    border-radius: 6px;
+    padding: 0;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    z-index: 10004;
+}
+
+#ooyalaplayer .oo_controls .oo_playhead {
+    background-image: url("../img/record.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: absolute;
+}
+
+#ooyalaplayer .oo_full_controls .oo_playhead{
+	top: -9px !important;
+}
+
+.oo_playhead_progress {
+        background:red !important;
+        }
+
+.oo_buffer_progress {
+        background:#800 !important;
+        }
+        
+#ooyalaplayer .oo_controls .oo_scrubber_track{
+	bottom:5px !important;
+	top:7px !important;
+}
+
+#ooyalaplayer .oo_controls .oo_controls_inner{
+	bottom: -4px !important;
+}
+
+#ooyalaplayer .oo_full_controls .oo_toolbar_item{
+	top:5px;
+}
+
+.oo_promo div.oo_start_button{
+	background-color: #a00 !important;
+}

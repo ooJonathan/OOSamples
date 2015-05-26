@@ -1,0 +1,13 @@
+[
+	{
+		"title": "HTML5 Closed Captions",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8?platform=html5-priority",
+
+		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer', '5qZjJ2czr1hZznGFaDH_H_gejsVe5AVV'); $('video.video').append('<track src=\"samples/extra_files/testCC.vtt\" label=\"English captions\" kind=\"captions\" srclang=\"en-us\" default >');});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>Closed Captions on HTML5 player.</li><li><a href='http://dev.w3.org/html5/webvtt/' target='blank'>WebVTT Close Captions.</a></li><li><a href='https://quuz.org/webvtt/' target='blank'>WebVTT validator.</a></li><li>This sample uses jQuery to append element &lt;track&gt;.</li><li>Sample WebVTT file: <a href='samples/extra_files/testCC.vtt' target='blank'>testCC.vtt</a></li>"
+	}
+]

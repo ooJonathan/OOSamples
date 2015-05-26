@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Replay video",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "OO.ready(function(){player = OO.Player.create('ooyalaplayer', '11cjd2czoqFmrW7h1O9HFgt4dvaX0lw1');OO.$('#changer').click(function(){player.mb.publish('seek',0);player.play();});player.mb.intercept('paused', 'example', function(eventName) {console.log('>> PAUSED');});player.mb.intercept('playing', 'example', function(eventName) {console.log('>> RESUME');});});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>\n<button id='changer'>replay</button>",
+
+		"description_items": "<li>Replay functionality.</li><li>Using the <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>seek</a> event and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_apis.html' target='blank'>play()</a> function to replay a video.</li>"
+	}
+]

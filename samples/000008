@@ -1,0 +1,13 @@
+[
+	{
+		"title": "LiveRail sample",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer', 't3bzJ2czqaR4U4pFlLslnHP4sH1AA8Qw', {'liverail-ads-manager': {LR_PUBLISHER_ID: '1331',LR_ADMAP: 'in::0;in::100%'}});});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>Set a pre-roll and post-roll dynamically using 'LR_ADMAP'.</li><li>Player requires the LiveRail Ad Manager module.</li><li>LiveRail must be set up to return the correct number of ads.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/ads_ref_liverail.html' target='blank'>LiveRail documentation.</a></li>"
+	}
+]

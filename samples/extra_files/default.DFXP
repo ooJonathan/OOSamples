@@ -1,0 +1,32 @@
+<tt xml:lang="en" xmlns="http://www.w3.org/2006/04/ttaf1" xmlns:tts="http://www.w3.org/2006/04/ttaf1#styling">
+	<head>
+		<styling>
+			<style id="defaultCaption" tts:backgroundColor="black" tts:color="white" tts:fontFamily="SansSerif" tts:fontSize="12" tts:fontStyle="normal" tts:fontWeight="normal" tts:textAlign="left" tts:textDecoration="none"/>
+		</styling>
+	</head>
+	<body id="thebody">
+		<div style="defaultCaption" xml:lang="en">
+			<p begin="0:00:00.00" end="0:00:04.00">This is my 1st caption</p>
+			<p begin="0:00:05.00" end="0:00:09.00">This is my 2nd caption</p>
+			<p begin="0:00:10.00" end="0:00:14.00">This is my 3rd caption</p>
+			<p begin="0:00:15.00" end="0:00:19.00">This is my 4th caption</p>
+			<p begin="0:00:20.00" end="0:00:24.00">This is my 5th caption</p>
+			<p begin="0:00:25.00" end="0:00:29.00">This is my 6th caption</p>
+			<p begin="0:00:30.00" end="0:00:34.00">This is my last caption</p>
+			<p begin="0:00:30.00" end="0:01:00.00">This is my last caption</p>
+
+		</div>
+		<div style="defaultCaption" xml:lang="es">
+			<p begin="0:00:00.00" end="0:00:04.00">Mi 1er subtitulo</p>
+			<p begin="0:00:05.00" end="0:00:09.00">Mi 2do subtitulo</p>
+			<p begin="0:00:10.00" end="0:00:14.00">Mi 3ro subtitulo</p>
+			<p begin="0:00:15.00" end="0:00:19.00">Mi 4to subtitulo</p>
+			<p begin="0:00:20.00" end="0:00:24.00">Mi 5to subtitulo</p>
+			<p begin="0:00:25.00" end="0:00:29.00">Mi 6to subtitulo</p>
+			<p begin="0:00:30.00" end="0:01:00.00">Mi ultimo subtitulo</p>
+		</div>
+		<div xml:lang="fr">
+			<p begin="0:00:00.00" end="0:01:00.00">Bonjour</p>
+		</div>
+	</body>
+</tt>

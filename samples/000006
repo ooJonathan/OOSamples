@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Google IMA sample",
+
+		"player_id": "b2ac6ad82ee54ce4970c996a97868fd5",
+
+		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer', 'p5Znl1czr_wHOlVx6c9Mc-wmuw8MY6yd',{'google-ima-ads-manager': { 'adTagUrl': 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/6062/iab_vast_samples/skippable&ciu_szs=300x250,728x90&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]', 'showInAdControlBar': true,'showAdMarquee': true,'playWhenAdClick': true,'adRequestTimeout': 5000}}); });",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>We support VAST and Ad Rules.</li><li>The Ad Tag passed dynamically through the code.</li><li>Additional options to show or hide the Ad Marquee and Control Bar.</li><li>Set up an specific timeout time.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_google_ima.html' target='blank'>Google IMA documentation.</a></li>"
+	}
+]

@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Ooyala Player Token",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "OO.ready(function() {OO.Player.create('ooyalaplayer', 'A5eXRtcjpb6AEKizxldiaThNBmL9GWGU', {embedToken : 'http://player.ooyala.com/sas/embed_token/F0Y2E6qDLc1XS9yvdR-48ulAQ2t1/A5eXRtcjpb6AEKizxldiaThNBmL9GWGU?api_key=F0Y2E6qDLc1XS9yvdR-48ulAQ2t1.yRIJm&expires=1483688253&signature=sp4Cew3qqX1iBrlKSfjlryuPlbHIaLMzLh7/f39IBM4'});});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>Token-based authentication is one of the supported playback authorization solutions offered by Ooyala.</li><li>The <a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_tokenexpire.html' target='blank'>expiration date</a> must be set to some point in the future and must be the same on the token and signature.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html' target='blank'>Ooyala Player Token documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authparts.html' targe='blank'>Values used to create the Token</a></li>"
+	}
+]

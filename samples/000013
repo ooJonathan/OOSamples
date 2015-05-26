@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Basic Sample",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer','U3NjZscjp3vm3tcRKUd2TVZIgHgecIRB',{ adSetCode: '68a16c85d8f144d4858ac5fed8f89f9d',autoplay: true,showInAdControlBar: true,showAdMarquee: true,enableChannels: true});});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>Ad Set is set up dynamically using <a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>adSetCode</a>.</li><li><a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showInAdControlBar</a> and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showAdMarquee</a> can be set as global parameters.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_params.html' target='blank'>Embedded Parameters documentation.</a></li>"
+	}
+]

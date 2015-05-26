@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Set Embed Code function",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "var videoPlayer;var ooyalaEmbedCode = 't5aTJ2czrJ-F9aDNdhNCrh33x8dxOhKn';OO.ready(function() { videoPlayer = OO.Player.create('ooyalaplayer',ooyalaEmbedCode,{ 'adSetCode': 'cca48234f0ca46a9ae7240169634b898',});});function changeEmbedCode() {videoPlayer.setEmbedCode(ooyalaEmbedCode, {'adSetCode': '68a16c85d8f144d4858ac5fed8f89f9d',autoplay:true,});}",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>You can assign a new Ad Set Code.</li><li>Ad Set Codes are available on Backlot. If you don't have them, contact Technical Support and request Ad Set Code.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>Set Embed Code documentation.</a></li><ul class='instructions'>Instructions:<li>Play the video.</li><li>Click 'New Ad Set Code' button.</li><li>A different ad will be set for the same video.</li></ul>"
+	}
+]

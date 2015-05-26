@@ -1,0 +1,13 @@
+[
+	{
+		"title": "VPAID sample",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer', '1hM3RtcjoxEmNHz4z6DNWpaMcDSz_qpi',{'vpaid-ads-manager':{ adTag: 'http://cdn.innovid.com/iroll/vast/1hk265',adLayout: 'adjusted',showInAdControlBar: 'true',showAdMarquee: 'true'}});});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>The Ad Tag is assigned on the code. The video must have a 'VPAID OPF' Ad Set assigned.</li><li>Additional VPAID options.</li><li><strong>Note:</strong> VPAID Ads only work with the Flash player.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_vpaid.html' target='blank'>VPAID documentation.</a></li>"
+	}
+]

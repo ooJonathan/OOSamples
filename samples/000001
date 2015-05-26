@@ -1,0 +1,13 @@
+[
+	{
+		"title": "Flash Closed Captions (DFXP)",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "var player;OO.ready(function() { player = OO.Player.create('ooyalaplayer', 'J0Z3l1czqMhfSlvd8nfLtKN8EGg4p7W_'); });function englishCC(){player.setClosedCaptionsLanguage('en');}function frenchCC(){player.setClosedCaptionsLanguage('fr');}function spanishCC(){player.setClosedCaptionsLanguage('es');}function noCC(){player.setClosedCaptionsLanguage('none');}",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>\n<input type='submit' value='Set CC to English' onclick='englishCC()'/>\n<input type='submit' value='Set CC to Spanish' onclick='spanishCC()'/>\n<input type='submit' value='Set CC to French' onclick='frenchCC()'/>\n<input type='submit' value='Set CC None' onclick='noCC()'/>",
+
+		"description_items": "<li>The sample DFXP file has 3 languages (English, Spanish & French).</li><li>Click the buttons to change the language.</li><li><a href='samples/extra_files/default.DFXP' download='default.DFXP'>DFXP sample file.</a></li><li><a href='http://support.ooyala.com/documentation/reference/dfxp_format.html' target='blank'>DFXP Closed Captions documentation.</a></li><li><a href='http://www.w3.org/TR/ttaf1-dfxp/' target='blank'>DFXP (now TTML) documentation.</a></li>"
+	}
+]

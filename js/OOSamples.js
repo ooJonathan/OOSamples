@@ -1,6 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
+    Version: 1.0.0
 
     Code is organized as follows:
     
@@ -28,7 +29,7 @@ var OOSamples = {
     contentLayout:"",
 
     loadData: function(){
-// https://api.github.com/users/ooJonathan/gists
+        // https://api.github.com/users/ooJonathan/gists
 
         // var apiRoot = "https://api.github.com/users/";
         // var user = "ooJonathan";
@@ -170,7 +171,7 @@ var OOSamples = {
                         "<div class='content' style='height:100%;'>"+
                             "<div class='content-player'>"+
                                 "<div id='leftContentControl'>"+
-                                    "<h2>Video</h2></br>"+
+                                    "<h2 id='videoTitle'>Sample - "+this.data['title']+"</h2></br></br>"+
                                     "<div id='playerArea'></div>"+
                                 "</div>"+
                             "</div>"+
@@ -188,11 +189,11 @@ var OOSamples = {
                 "<div id='controlsHolder'>"+
                     "<nav>"+
                         "<ul>"+
-                            "<li><div class='more_samples' id='moreSamples'> <span id='burger-icon'>☰</span> Samples</div>"+
+                            "<li><div id='moreSamples'> <span id='burger-icon'>☰</span> Samples</div>"+
                                 "<ul id='samples_menu' style='display:none;'>"+
-                                    "<li><div class='' id='sm_Configuration'>Player Configuration</div></li>"+
-                                    "<li><div class='' id='sm_Interaction'>Player Interaction</div></li>"+
-                                    "<li><div class='' id='sm_Monetization'>Monetization</div></li>"+
+                                    "<li><div class='samples_cat' id='sm_Configuration'>Player Configuration</div></li>"+
+                                    "<li><div class='samples_cat' id='sm_Interaction'>Player Interaction</div></li>"+
+                                    "<li><div class='samples_cat' id='sm_Monetization'>Monetization</div></li>"+
                                 "</ul>"+
                             "</li>"+
                             "<li><div class='launch' id='launchPlayer'>Run</div></li>"+
@@ -209,7 +210,6 @@ var OOSamples = {
             "<div id='floatingMenu'>"+
                 "<div class='triangle'></div>"+
                 "<ul id=''>"+
-                   
                 "</ul>"+
             "</div>");            
     },
@@ -399,7 +399,7 @@ var balanceCode = {
     char : "",
     stackChar : "",
 
-    // Validates that the entered code balanced brakets and quotes
+    // Validates that the entered code has balanced brakets and quotes
     start: function(code){
         this.restartVars();
         code = code.replace(/[^\(\)\[\]\{\}\'\"\n]/gim,"");
@@ -431,6 +431,10 @@ var balanceCode = {
     // Evaluates quote chars
     checkQuotes: function (){
         if (/["']/.test(this.char)){
+            if (this.stackChar== undefined){
+                this.quotesFlag = true;
+                return 1;
+            }
             if (this.stackChar[0]!=this.char && !/["']/.test(this.stackChar[0])){
                 this.pushToStak();
                 this.quotesFlag = true;
@@ -619,51 +623,68 @@ $(document).on("click","#moreSamples",function(){
     if (OOSamples.finalCode.hidden){
         if ($("#samples_menu").is(':visible') == true){
             $("#samples_menu").slideUp("slow");
-            $("#floatingMenu").hide();    
+            $("#floatingMenu").hide();
         }else
             $("#samples_menu").slideDown("slow");
     }
+
 });
 
 $(document).on("mouseover","#sm_Configuration",function(){
     $("#floatingMenu").show();
-    $("#floatingMenu .triangle").offset({ top: 120, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='' id=''>VAST</div></li>"+
-                    "<li><div class='' id=''>Parameters 1</div></li>"+
-                    "<li><div class='' id=''>Parameters 2</div></li>"+
-                    "<li><div class='' id=''>Load Dynamically</div></li>"+
-                    "<li><div class='' id=''>Set Embed Code</div></li>"+
-                    "<li><div class='' id=''>CC HTML5</div></li>"+
-                    "<li><div class='' id=''>CC Flash</div></li>"+
-                    "<li><div class='' id=''>Omniture</div></li>"+
-                    "<li><div class='' id=''>Player Token</div></li>");
+    $("#floatingMenu .triangle").offset({ top: 122, left: 137 });
+    $("#floatingMenu ul").html("<li><div class='' id='000000'>Player Basic embed code</div></li>"+
+                    "<li><div class='' id='000011'>Parameters 1</div></li>"+
+                    "<li><div class='' id='000013'>Parameters 2</div></li>"+
+                    "<li><div class='' id='000003'>Load Dynamically</div></li>"+
+                    "<li><div class='' id='000015'>Set Embed Code</div></li>"+
+                    "<li><div class='' id='000005'>HTML5 CC</div></li>"+
+                    "<li><div class='' id='000001'>Flash CC</div></li>"+
+                    "<li><div class='' id='000009'>Omniture</div></li>"+
+                    "<li><div class='' id='000010'>Player Token</div></li>");
 });
 
 $(document).on("mouseover","#sm_Interaction",function(){
     $("#floatingMenu").show();
-    $("#floatingMenu .triangle").offset({ top: 165, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='' id=''>Set Volume</div></li>"+
-                    "<li><div class='' id=''>Replay</div></li>"+
-                    "<li><div class='' id=''>Fullscreen</div></li>"+
-                    "<li><div class='' id=''>Intercept</div></li>"+
-                    "<li><div class='' id=''>Destroy</div></li>");
+    $("#floatingMenu .triangle").offset({ top: 167, left: 137 });
+    $("#floatingMenu ul").html( "<li><div class='' id='000016'>Set Volume</div></li>"+
+                    "<li><div class='' id='000014'>Replay</div></li>"+
+                    "<li><div class='' id='000004'>Fullscreen</div></li>"+
+                    "<li><div class='' id='000007'>Intercept</div></li>"+
+                    "<li><div class='' id='000002'>Destroy</div></li>");
 });
 
 $(document).on("mouseover","#sm_Monetization",function(){
     $("#floatingMenu").show();
     $("#floatingMenu .triangle").offset({ top: 210, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='' id='010101'>VAST</div></li>"+
-                    "<li><div class='' id=''>Google IMA</div></li>"+
-                    "<li><div class='' id=''>VPAID</div></li>"+
-                    "<li><div class='' id=''>LiveRail</div></li>");
+    $("#floatingMenu ul").html( "<li><div class='000012' id='010101'>VAST</div></li>"+
+                    "<li><div class='' id='000006'>Google IMA</div></li>"+
+                    "<li><div class='' id='000017'>VPAID</div></li>"+
+                    "<li><div class='' id='000008'>LiveRail</div></li>");
     
 });
 
-
 $(document).on("click","#floatingMenu ul li div",function(){
-    window.location.replace(window.location.href+"?id="+$(this).attr("id"));
+    window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"));
 });
 
+$(document).on("click","div",function(evt){
+// $('div').click(function(evt){    
+    if(evt.target.className == "samples_cat")
+        return;
+
+    if(evt.target.id == "moreSamples")
+        return;
+
+    if($(evt.target).closest('.samples_cat, #moreSamples').length)
+        return;     
+
+
+    if ($("#samples_menu").is(':visible') == true){
+        $("#samples_menu").slideUp("slow");
+        $("#floatingMenu").hide();
+    }
+});
 
 function sendToGist(){
    var data = {

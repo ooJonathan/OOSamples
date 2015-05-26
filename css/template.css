@@ -7,7 +7,7 @@ body{
 h2 {
     float:left;
     font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size:16px;
+    font-size:22px;
     font-weight:lighter;
     color:#484747;
     letter-spacing:1px;
@@ -170,7 +170,7 @@ z-index: 1001;
 #floatingMenu{
   display: none;
   position:absolute;
-  top:74px;
+  top:118px;
   left:150px;
   width:190px;
 }
@@ -272,5 +272,14 @@ z-index: 1001;
 
 div.ui-layout-west.ui-layout-pane.ui-layout-pane-west{
   padding: 0px  !important;
+
+}
+
+
+
+
+
+
+#videoTitle{
 
 }
