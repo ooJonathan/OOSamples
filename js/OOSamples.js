@@ -188,6 +188,13 @@ var OOSamples = {
                 "<div id='controlsHolder'>"+
                     "<nav>"+
                         "<ul>"+
+                            "<li><div class='more_samples' id='moreSamples'> <span id='burger-icon'>☰</span> Samples</div>"+
+                                "<ul id='samples_menu' style='display:none;'>"+
+                                    "<li><div class='' id='sm_Configuration'>Player Configuration</div></li>"+
+                                    "<li><div class='' id='sm_Interaction'>Player Interaction</div></li>"+
+                                    "<li><div class='' id='sm_Monetization'>Monetization</div></li>"+
+                                "</ul>"+
+                            "</li>"+
                             "<li><div class='launch' id='launchPlayer'>Run</div></li>"+
                             "<li><div id='prettifyCode'>Prettify</div></li>"+
                             "<li><div id='finalCode'>Copy Code</div></li>"+
@@ -198,6 +205,12 @@ var OOSamples = {
                         "</ul>"+
                     "</nav>"+
                 "</div>"+
+            "</div>"+
+            "<div id='floatingMenu'>"+
+                "<div class='triangle'></div>"+
+                "<ul id=''>"+
+                   
+                "</ul>"+
             "</div>");            
     },
 
@@ -602,6 +615,56 @@ $(document).on("click","#sendToGist",function(){
     }
 });
 
+$(document).on("click","#moreSamples",function(){
+    if (OOSamples.finalCode.hidden){
+        if ($("#samples_menu").is(':visible') == true){
+            $("#samples_menu").slideUp("slow");
+            $("#floatingMenu").hide();    
+        }else
+            $("#samples_menu").slideDown("slow");
+    }
+});
+
+$(document).on("mouseover","#sm_Configuration",function(){
+    $("#floatingMenu").show();
+    $("#floatingMenu .triangle").offset({ top: 120, left: 137 });
+    $("#floatingMenu ul").html( "<li><div class='' id=''>VAST</div></li>"+
+                    "<li><div class='' id=''>Parameters 1</div></li>"+
+                    "<li><div class='' id=''>Parameters 2</div></li>"+
+                    "<li><div class='' id=''>Load Dynamically</div></li>"+
+                    "<li><div class='' id=''>Set Embed Code</div></li>"+
+                    "<li><div class='' id=''>CC HTML5</div></li>"+
+                    "<li><div class='' id=''>CC Flash</div></li>"+
+                    "<li><div class='' id=''>Omniture</div></li>"+
+                    "<li><div class='' id=''>Player Token</div></li>");
+});
+
+$(document).on("mouseover","#sm_Interaction",function(){
+    $("#floatingMenu").show();
+    $("#floatingMenu .triangle").offset({ top: 165, left: 137 });
+    $("#floatingMenu ul").html( "<li><div class='' id=''>Set Volume</div></li>"+
+                    "<li><div class='' id=''>Replay</div></li>"+
+                    "<li><div class='' id=''>Fullscreen</div></li>"+
+                    "<li><div class='' id=''>Intercept</div></li>"+
+                    "<li><div class='' id=''>Destroy</div></li>");
+});
+
+$(document).on("mouseover","#sm_Monetization",function(){
+    $("#floatingMenu").show();
+    $("#floatingMenu .triangle").offset({ top: 210, left: 137 });
+    $("#floatingMenu ul").html( "<li><div class='' id='010101'>VAST</div></li>"+
+                    "<li><div class='' id=''>Google IMA</div></li>"+
+                    "<li><div class='' id=''>VPAID</div></li>"+
+                    "<li><div class='' id=''>LiveRail</div></li>");
+    
+});
+
+
+$(document).on("click","#floatingMenu ul li div",function(){
+    window.location.replace(window.location.href+"?id="+$(this).attr("id"));
+});
+
+
 function sendToGist(){
    var data = {
         "description": "posting gist test",
@@ -622,10 +685,10 @@ function sendToGist(){
   })
   .success( function(e) {
     console.log(e);
-    alert("Your code has been sent to Gist. Use the following link to retreive your code:\n\n"+e.html_url)
+    alert("Your code has been sent to Gist:\n\n"+e.html_url)
   })
   .error( function(e) {
-    console.warn("gist save error", e);
+    console.warn("Gist save error", e);
   });
   
    
