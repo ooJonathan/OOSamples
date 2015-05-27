@@ -4,7 +4,7 @@
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8?platform=html5-priority",
 
-		"player_code": "OO.ready(function() { OO.Player.create('ooyalaplayer', '5qZjJ2czr1hZznGFaDH_H_gejsVe5AVV'); $('video.video').append('<track src=\"samples/extra_files/testCC.vtt\" label=\"English captions\" kind=\"captions\" srclang=\"en-us\" default >');});",
+		"player_code": "$=OO.$; /* jQuery is already implemented on the player */OO.ready(function() { OO.Player.create('ooyalaplayer', '5qZjJ2czr1hZznGFaDH_H_gejsVe5AVV'); $('video.video').append('<track src=\"samples/extra_files/testCC.vtt\" label=\"English captions\" kind=\"captions\" srclang=\"en-us\" default >');});",
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 

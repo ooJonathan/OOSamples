@@ -4,7 +4,7 @@
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
-		"player_code": "var ooplayer;OO.ready(function() {ooplayer = OO.Player.create('ooyalaplayer', 'Fuazd2czpqhkPUM2qTgPqfxamv4EPeqH',{\n/* Additional Player configuration */});});",
+		"player_code": "OO.ready(function() {ooplayer = OO.Player.create('',''{'vast':{tagUrl:'tag'},onCreate: function(player) {player.subscribe(function(){switch(){break;}});}});});",
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 

@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.0
+    Version: 1.0.1
 
     Code is organized as follows:
     
@@ -29,21 +29,6 @@ var OOSamples = {
     contentLayout:"",
 
     loadData: function(){
-        // https://api.github.com/users/ooJonathan/gists
-
-        // var apiRoot = "https://api.github.com/users/";
-        // var user = "ooJonathan";
-
-        // $.getJSON(apiRoot+user+"/gists", function(data) {
-            
-
-        //     data[0].player_code =  data[0].player_code;
-        //     data[0].HTML_items = data[0].HTML_items;
-
-        //     OOSamples.data = data[0];
-        //     OOSamples.loadUI();
-        // });
-
         var id = (window.location.search!="")? window.location.search.substr(4) : "000000";
         
         $.get("samples/"+id).fail(function(x){
@@ -52,7 +37,7 @@ var OOSamples = {
         });
         
         $.getJSON("samples/"+id, function(data) {
-            var playerCodeMsg = "/* Enter your Player Code and JavaScript code on this section */";
+            var playerCodeMsg = "/* Enter your Player Code and JavaScript code on this section */\n";
             var HTMLCodeMsg = "<!-- Enter your HTML code in this section -->\n";
 
             data[0].player_code = playerCodeMsg + data[0].player_code;
@@ -273,7 +258,8 @@ function URLEditor(val,width,height,UIElement){
 /* JS EDITOR */
 function JSEditor(val,width,height,UIElement){
     this.editor = CodeMirror(document.getElementById(UIElement), {
-                        value: formatCode.format(val),
+                        // value: formatCode.format(val),
+                        value: beautifyCode.JS(val),
                         theme: "blackboard",
                         mode: "javascript",
                         lineNumbers: true,
@@ -297,14 +283,14 @@ function JSEditor(val,width,height,UIElement){
         }     
     };
     this.loadPrettyCode = function(){
-        this.editor.setValue(formatCode.format(this.code()));
+        this.editor.setValue(beautifyCode.JS(this.code()));
     }
 }
 
 /* HTML EDITOR */
 function HTMLEditor(val,width,height,UIElement){
     this.editor = CodeMirror(document.getElementById(UIElement), {
-        value: val,
+        value: beautifyCode.HTML(val),
         mode: "htmlmixed",
         lineNumbers: true,
         lineWrapping: true,
@@ -321,7 +307,7 @@ function HTMLEditor(val,width,height,UIElement){
 /* FINAL EDITOR */
 function FinalEditor(val,width,height,UIElement){
     this.editor = CodeMirror(document.getElementById(UIElement), {
-        value: val,
+        value: beautifyCode.HTML(val),
         mode: "htmlmixed",
         lineNumbers: true,
         lineWrapping: true,
@@ -498,83 +484,30 @@ var balanceCode = {
 };//balanceCode ends
 
 
-/* FORMAT PLAYER CODE */
-var formatCode = {
-    tabCounter : 0,
-
-    // Removes new line, tab and spaces from the code before indenting the code
-    format: function(code){
-        var codeArray = code.split('\n');
-        code = "";
-        for (var i=0;i<codeArray.length;i++){
-            code += codeArray[i].trim().replace(/[\n\r\t]/gm,"");
-        }
-        return this.autoindentCode(code);
+/* BEAUTIFY PLAYER CODE */
+var beautifyCode = {
+    JS: function(code){
+        return js_beautify(code, {
+            'indent_size': 1,
+            'indent_char': '\t',
+            'brace_style':'end-expand'
+        });
     },
 
-    // Indents the code by inseting new line and tab chars every '{', '}', ';' and '*/'
-    autoindentCode: function(code){
-        this.tabCounter = 0;
-        var quotesDetected = false;
-        var quoteChar = "";
-        for (var i=0;i<code.length;i++){
-            var char = code.charAt(i);
-            
-            // Detects if a string has started to avoid indenting it's content
-            if ((/[\'\"]/).test(char)){
-                if (quoteChar==""){
-                    quoteChar = char;
-                    quotesDetected = true;
-                }else if (quoteChar==char){
-                    quoteChar = "";
-                    quotesDetected = false;
-                }
-            }
-
-            // Indents '{', '}', ';', '*/' cutting the code, creating the new section and concatenating everything back
-            if ((/[\{\}\;\*]/).test(char) && !quotesDetected){
-                if (char=="{"){
-                    this.tabCounter += 1;
-                    var newStr = char.concat("\n").concat(this.calculateTabs());
-                    code = code.substring(0,i).concat(newStr).concat(code.slice(i+1));
-                    i += newStr.length-1;
-                }else if (char=="}"){
-                    var sliceStart = 1;
-                    if (code.substr(i,3)=="});"){
-                        this.tabCounter -= 2;
-                        char = "});";
-                        sliceStart = 3;
-                    }
-                    this.tabCounter -= 1;
-                    var newStr = (code.charAt(i-1)=="\n")? "":"\n";
-                    var newStrEnds = (code.charAt(i+sliceStart)!="}")?this.calculateTabs():"";
-                    newStr = newStr.concat(this.calculateTabs()).concat(char.concat("\n")).concat(newStrEnds);
-                    code = code.substring(0,i).concat(newStr).concat(code.slice(i+sliceStart));
-                    i += newStr.length-1;
-                }else if (char==";"){
-                    var newStr = char.concat("\n").concat(this.calculateTabs());
-                    code = code.substring(0,i).concat(newStr).concat(code.slice(i+1));
-                    i += newStr.length;
-                }else if (char+code.charAt(i+1)=="*/"){
-                    var newStr = ("*/").concat("\n").concat(this.calculateTabs());
-                    code = code.substring(0,i).concat(newStr).concat(code.slice(i+2));
-                    i += newStr.length;
-                }
-            }
-            
-        }
-        return code.trim();
-    },
-
-    // Returns the amount of tabs that will be inserted to indent
-    calculateTabs: function(){
-        var tabs = "";
-        for (var i=0;i<this.tabCounter;i++)
-            tabs = tabs.concat("\t"); 
-        
-        return tabs;
+    HTML: function(code){
+        return style_html(code, {
+            'indent_inner_html': false,
+            'indent_size': 1,
+            'indent_char': '\t',
+            'wrap_line_length': 78,
+            'brace_style': 'expand',
+            'unformatted': ['a', 'sub', 'sup', 'b', 'i', 'u'],
+            'preserve_newlines': true,
+            'indent_handlebars': false,
+            'extra_liners': ['/html']
+        },true,true);
     }
-}// formatCode ends
+}// beautify ends
 
 /* UI CONTROL'S FUNCTIONS */
 
@@ -657,7 +590,7 @@ $(document).on("mouseover","#sm_Interaction",function(){
 $(document).on("mouseover","#sm_Monetization",function(){
     $("#floatingMenu").show();
     $("#floatingMenu .triangle").offset({ top: 210, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='000012' id='010101'>VAST</div></li>"+
+    $("#floatingMenu ul").html( "<li><div class='' id='000012'>VAST</div></li>"+
                     "<li><div class='' id='000006'>Google IMA</div></li>"+
                     "<li><div class='' id='000017'>VPAID</div></li>"+
                     "<li><div class='' id='000008'>LiveRail</div></li>");
