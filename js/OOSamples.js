@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.1
+    Version: 1.0.2
 
     Code is organized as follows:
     
@@ -302,6 +302,9 @@ function HTMLEditor(val,width,height,UIElement){
     this.loadCode = function(){
         $("#playerArea").html(this.code()); // Loads the HTML code into "playerArea" DIV
     }
+    this.loadPrettyCode = function(){
+        this.editor.setValue(beautifyCode.HTML(this.code()));
+    }
 }
 
 /* FINAL EDITOR */
@@ -519,6 +522,7 @@ $(document).on("click","#launchPlayer",function(){
 $(document).on("click","#prettifyCode",function(){
     if (OOSamples.finalCode.hidden)
         OOSamples.playerCode.loadPrettyCode();
+        OOSamples.HTMLCode.loadPrettyCode();
 });
 
 $(document).on("click","#finalCode",function(){
@@ -566,13 +570,15 @@ $(document).on("click","#moreSamples",function(){
 $(document).on("mouseover","#sm_Configuration",function(){
     $("#floatingMenu").show();
     $("#floatingMenu .triangle").offset({ top: 122, left: 137 });
-    $("#floatingMenu ul").html("<li><div class='' id='000000'>Player Basic embed code</div></li>"+
+    $("#floatingMenu ul").html("<li><div class='' id='000018'>Flash Player</div></li>"+
+                    "<li><div class='' id='000019'>HTML5 Player</div></li>"+
                     "<li><div class='' id='000011'>Parameters 1</div></li>"+
                     "<li><div class='' id='000013'>Parameters 2</div></li>"+
                     "<li><div class='' id='000003'>Load Dynamically</div></li>"+
                     "<li><div class='' id='000015'>Set Embed Code</div></li>"+
                     "<li><div class='' id='000005'>HTML5 CC</div></li>"+
                     "<li><div class='' id='000001'>Flash CC</div></li>"+
+                    "<li><div class='' id='000005'>HTML5 Facebook/Twitter buttons</div></li>"+
                     "<li><div class='' id='000009'>Omniture</div></li>"+
                     "<li><div class='' id='000010'>Player Token</div></li>");
 });

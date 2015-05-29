@@ -1,0 +1,14 @@
+[
+	{
+		"title": "HTML5 Player",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8?platform=html5-priority",
+
+		"player_code": "var ooplayer;OO.ready(function() {ooplayer = OO.Player.create('ooyalaplayer', 'Fuazd2czpqhkPUM2qTgPqfxamv4EPeqH');});",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>The HTML5 player is embed with the same code as the Flash Player, the difference it the parameter added to the player's script URL 'platform=html5-priority'.</li><li>The HTML5 player is supported on the following <a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_reqs.html' target='blank'>browsers.</a></li><li>On mobile devices, the HTML5 player is used due to it's versatility and easiness to customize.</li><li>The HTML5 is really easy to customize and we provide sample of the most common features.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_tutorial.html' target='blank'>Basic Tutorial for the HTML5 Player.</a></li><li><a href='http://support.ooyala.com/developers/users/documentation/api/player_v3_api_qparams.html' target='blank'>Platform parameters documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_compare.html' target='blank'>HTML5 Player / Flash Player Comparison.</a></li><li><a href='http://support.ooyala.com/developers/documentation/reference/faq_player.html' target='blank'>Player FAQ.</a></li>"
+	}
+]
+
