@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Set a pre-roll and post-roll dynamically using 'LR_ADMAP'.</li><li>Player requires the LiveRail Ad Manager module.</li><li>LiveRail must be set up to return the correct number of ads.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/ads_ref_liverail.html' target='blank'>LiveRail documentation.</a></li>"
+		"description_items": "<li>Set a pre-roll and post-roll dynamically using 'LR_ADMAP'.</li><li>Player requires the LiveRail Ad Manager module.</li><li>LiveRail must be set up to return the correct number of ads.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/ads_ref_liverail.html' target='blank'>LiveRail documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]

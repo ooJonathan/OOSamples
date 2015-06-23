@@ -1,6 +1,6 @@
 [
     {
-        "title": "Intercept Message Bus event",
+        "title": "Intercept a Message Bus Event",
 
         "player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -8,6 +8,8 @@
 
         "HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-        "description_items": "<li>Message Bus intercept functionality to execute code before an specific event is triggered.</li><li>Controlling player with <a href='http://support.ooyala.com/developers/documentation/api/player_v3_apis.html' target='blank'>Player API functions</a> play() & paused().</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_mbapi.html' target='blank'>Message Bus documentation.</a></li><ul class='instructions'>Instructions:<li>Play video.</li><li>Pause the video and select to either allow or reject the action.</li><li>Below the player, on the text box you will see the messages according to the events.</li><li>Play and pause the video and see the different messages.</li>"
+        "description_items": "<li>Use Message Bus intercept functionality to execute code before an specific event is triggered.</li><li>Control the player with play() and paused()<a href='http://support.ooyala.com/developers/documentation/api/player_v3_apis.html' target='blank'>Player API functions</a>.</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_mbapi.html' target='blank'>Message Bus documentation.</a></li>",
+
+		"instructions_items":"<li>Play the video.</li><li>Pause the video and select to either allow or reject the action.</li><li>In the text box below the player, you will see messages corresponding to the events.</li><li>Play and pause the video to see the various possible messages.</li>"
     }
 ]

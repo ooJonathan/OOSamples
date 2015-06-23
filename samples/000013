@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Ad Set is set up dynamically using <a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>adSetCode</a>.</li><li><a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showInAdControlBar</a> and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showAdMarquee</a> can be set as global parameters.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_params.html' target='blank'>Embedded Parameters documentation.</a></li>"
+		"description_items": "<li>Ad Set is set up dynamically using <a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>adSetCode</a>.</li><li><a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showInAdControlBar</a> and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>showAdMarquee</a> can be set as global parameters.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_params.html' target='blank'>Embedded Parameters documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]

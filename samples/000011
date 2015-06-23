@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Define player size on code.</li><li>(Optional) Set an <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>initialTime</a> in seconds to start playing the video. This option will not work with 'autoplay'.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_params.html' target='blank'>Embedded Parameters documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_css_example.html' target='blank'>HTML5 player with custom CSS documentation.</a></li><li><a href='extra_files/playerStyle.css' download='extra_files/playerStyle.css' target='blank'>Sample CSS.</a></li>"
+		"description_items": "<li>Define player size in the code.</li><li>(Optional) Set an <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_embedparams.html' target='blank'>initialTime</a> in seconds to start playing the video. This option will not work with 'autoplay'.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_params.html' target='blank'>Embedded Parameters documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_css_example.html' target='blank'>HTML5 player with custom CSS documentation.</a></li><li><a href='samples/extra_files/playerStyle.css' download='samples/extra_files/playerStyle.css' target='blank'>Sample CSS.</a></li>",
+
+		"instructions_items":""
 	}
 ]

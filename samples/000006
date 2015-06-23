@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>We support VAST and Ad Rules.</li><li>The Ad Tag passed dynamically through the code.</li><li>Additional options to show or hide the Ad Marquee and Control Bar.</li><li>Set up an specific timeout time.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_google_ima.html' target='blank'>Google IMA documentation.</a></li>"
+		"description_items": "<li>We support VAST and Ad Rules.</li><li>The Ad Tag passed dynamically through the code.</li><li>Additional options to show or hide the Ad Marquee and Control Bar.</li><li>Set up an specific timeout time.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_google_ima.html' target='blank'>Google IMA documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]

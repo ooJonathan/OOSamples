@@ -1,7 +1,7 @@
 
 [
 	{
-		"title": "Come back from fullscreen programatically",
+		"title": "Programmatically Exit Fullscreen Mode",
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -9,6 +9,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>\n<button id='changer'>Swap to Fullscreen</button>",
 
-		"description_items": "<li>Go to fullscreen mode.</li><li>Listen to <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>playheadTimeChanged</a> event and get the playtime seconds.</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_listenevent.html' target='blank'>Listening</a> and <a href='http://support.ooyala.com/developers/users/documentation/concepts/player_v3_dev_writeevent.html' target='blank'>writing</a> to the Message Bus.</li>Instructions:<br/><ul class='instructions'><li>Click 'Swap to Fullscreen'.</li><li>Play the video.</li><li>On second 5 the video will exit fullscreen mode.</li><li>Review on the Console what events were triggered.</li></ul>"
+		"description_items": "<li>Go to fullscreen mode.</li><li>Listen to the <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>playheadTimeChanged</a> event and get the play time in seconds.</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_listenevent.html' target='blank'>Listen</a> and <a href='http://support.ooyala.com/developers/users/documentation/concepts/player_v3_dev_writeevent.html' target='blank'>write</a> to the Message Bus.</li>",
+
+		"instructions_items":"<li>Click 'Swap to Fullscreen'.</li><li>Play the video.</li><li>After 5 seconds, the video will exit fullscreen mode.</li><li>Review on the Console the events that were triggered.</li>"
 	}
 ]

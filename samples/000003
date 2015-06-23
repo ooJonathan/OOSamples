@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px;display:none'></div>\nPlayer Branding ID: <input type='text' id='playerBrandingID' value='d3cf86763d9049329ffc74fb94b794b8' style='width: 210px;'/>\n<br>\nContent ID: <input type='text' id='contentID' value='phaTJ2czprsLC9ldDMRRfcJr9GsUQtH9' style='width: 210px;'/>\n<br>\n<button id='show'>Load Player</button>",
 
-		"description_items": "<li>Load player dynamically.</li><li>Every time the player is loaded, the Player Branding ID and Content ID are refreshed with new values.</li><ul class='instructions'>Instructions:<br/><li>Enter a Player Branding ID and Content ID.</li><li>Click 'Load Player'.</li></ul>"
+		"description_items": "<li>Load player dynamically.</li><li>Every time the player is loaded, the Player Branding ID and Content ID are refreshed with new values.</li>",
+
+		"instructions_items":"<li>Enter a Player Branding ID and Content ID.</li><li>Click 'Load Player'.</li></ul>"
 	}
 ]

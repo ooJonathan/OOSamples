@@ -1,0 +1,15 @@
+[
+	{
+		"title": "Responsive Player (width and height)",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
+
+		"player_code": "var ooplayer;OO.ready(function(){ooplayer=OO.Player.create('ooyalaplayer','Fuazd2czpqhkPUM2qTgPqfxamv4EPeqH',{})});$(document).ready(function(){$(window).resize(function(){resize()});resize()});function resize(){nW=$('.content-player').width();nH=Math.floor((nW*9)/16);console.log(nH);$('#ooyalaplayer').css({width:nW,height:nH})}",
+
+		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
+
+		"description_items": "<li>Responsive player, width and height.</li><li>The player is resized when the browser window is resized.</li><li>Responsiveness is done through JavaScript.</li><li><b>Note:</b> This sample has a delay when resizing the window. This is cause the width value comes from the internal element '.content-player' which gets updated when you stop dragging the browser border, rather than getting width the value from the window itself (line 14). The lag is avoided by replacing '.content-player' by 'window' (without the quotes) in your file.</li>",
+
+		"instructions_items":"<li>Rezise the right panel by dragging the middle bar to the left side of the page. You will have more space to see how it works this way.</li><li>Resize your browser slowly.</li>"
+	}
+]

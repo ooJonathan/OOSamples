@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Replay video",
+		"title": "Replay Video",
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>\n<button id='changer'>replay</button>",
 
-		"description_items": "<li>Replay functionality.</li><li>Using the <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>seek</a> event and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_apis.html' target='blank'>play()</a> function to replay a video.</li>"
+		"description_items": "<li>Replay functionality.</li><li>Using the <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>seek</a> event and <a href='http://support.ooyala.com/developers/documentation/api/player_v3_apis.html' target='blank'>play()</a> function to replay a video.</li>",
+
+		"instructions_items":""
 	}
 ]

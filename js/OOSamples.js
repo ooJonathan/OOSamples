@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.2
+    Version: 1.0.3
 
     Code is organized as follows:
     
@@ -17,7 +17,6 @@
 
 /* MAIN OBJECT (OOSamples) */
 var OOSamples = {
-    // data : new Array(4), // Data from the HTLM page
     data: "",
     playerURL: "",
     playerCode : "",
@@ -27,6 +26,8 @@ var OOSamples = {
     containerLayout:"",
     editorsLayout:"",
     contentLayout:"",
+    visualStyle:"",
+    gistURL:"",
 
     loadData: function(){
         var id = (window.location.search!="")? window.location.search.substr(4) : "000000";
@@ -37,11 +38,15 @@ var OOSamples = {
         });
         
         $.getJSON("samples/"+id, function(data) {
-            var playerCodeMsg = "/* Enter your Player Code and JavaScript code on this section */\n";
+            var playerCodeMsg = "/* Enter your Player Code and JavaScript code in this section */\n";
             var HTMLCodeMsg = "<!-- Enter your HTML code in this section -->\n";
 
             data[0].player_code = playerCodeMsg + data[0].player_code;
             data[0].HTML_items = HTMLCodeMsg + data[0].HTML_items;
+            if ((data[0].instructions_items != "") && (data[0].instructions_items!=undefined))
+                data[0].instructions_items = "<h2>Instructions</h2><br/><br><ul class='instructions'>"+data[0].instructions_items+"</ul>";
+            else
+                data[0].instructions_items = "";
 
             OOSamples.data = data[0];
             OOSamples.loadUI();
@@ -55,8 +60,9 @@ var OOSamples = {
         this.playerCode = new JSEditor(this.data['player_code'],"100%","100%","codeEditor");
         this.finalCode = new FinalEditor("","100%","100%","finalCodeEditor");
         this.playerURL = new URLEditor(this.data['player_id'],"100%","20px","playerScriptEditor");
+        this.getStyleCookie();
         this.loadPlayerDropDown();
-        this.loadPlayer();            
+        this.loadPlayer();       
     },
 
     // Function to load the Player. Also executed by 'Load Player' button
@@ -75,7 +81,7 @@ var OOSamples = {
             togglerLength_closed: 0,
             north__size:70,
             north__resizable: false,
-            west__size:138,
+            west__size:40,
             west__resizable: false
             //stateManagement__enabled:true,
         });
@@ -130,7 +136,7 @@ var OOSamples = {
             "</div>"+
             "<div class='ui-layout-center'>"+
                 "<div class='container' style='height:100%;'>"+
-                    "<div class='container-west'>"+
+                    "<div class=' container-west'>"+
                         "<div class='editors' style='height:100%;'>"+
                             "<div class='editors-north editorHolder'>"+
                                 "<h4>Player URL: </h4>"+
@@ -142,7 +148,7 @@ var OOSamples = {
                                     "<div id='codeEditor'></div>"+
                                 "</div>"+
                                 "<div id='finalEditor'>"+
-                                    "<h4>Copy this code to your web site. Changes can be done on this mode. To edit click on 'Edit Code'.</h4>"+
+                                    "<h4>The below code was generated with the code available on the code editors. Copy this code to your webpage. <br> Changes cannot be done on this mode. To exit copy mode, click on the 'Close' icon on the left menu bar.</h4>"+
                                     "<div id='finalCodeEditor'></div>"+
                                 "</div>"+
                             "</div>"+
@@ -164,6 +170,7 @@ var OOSamples = {
                                 "<div id='rightContentControl'>"+
                                     "<h2>Description</h2><br/><br/>"+
                                     this.data['description_items']+
+                                    this.data['instructions_items']+
                                 "</div>"+
                             "</div>"+
                         "</div>"+
@@ -174,29 +181,63 @@ var OOSamples = {
                 "<div id='controlsHolder'>"+
                     "<nav>"+
                         "<ul>"+
-                            "<li><div id='moreSamples'> <span id='burger-icon'>☰</span> Samples</div>"+
-                                "<ul id='samples_menu' style='display:none;'>"+
-                                    "<li><div class='samples_cat' id='sm_Configuration'>Player Configuration</div></li>"+
-                                    "<li><div class='samples_cat' id='sm_Interaction'>Player Interaction</div></li>"+
-                                    "<li><div class='samples_cat' id='sm_Monetization'>Monetization</div></li>"+
-                                "</ul>"+
-                            "</li>"+
-                            "<li><div class='launch' id='launchPlayer'>Run</div></li>"+
-                            "<li><div id='prettifyCode'>Prettify</div></li>"+
-                            "<li><div id='finalCode'>Copy Code</div></li>"+
-                            "<li><div id='sendToGist'>To Gist</div></li>"+
-                            "<li><div id='hidePlayerURL' class='switch active'>Player URL</div></li>"+
-                            "<li><div id='hideHTML' class='switch active'>HTML</div></li>"+
-                            "<li><div id='hideDescription' class='switch active'>Description</div></li>"+
+                            "<li><div id='moreSamples' class='menu' title='Samples' icon='fa-navicon'><i class='fa fa-navicon fa-lg'></i></div></li>"+
+                            "<li><div id='launchPlayer' class='menu' title='Run' icon='fa-play'><i class='fa fa-play fa-lg'></i></div></li>"+
+                            "<li><div id='prettifyCode' class='menu' title='Prettify' icon='fa-magic'><i class='fa fa-magic fa-lg'></i></div></li>"+
+                            "<li><div id='debugCode' class='switch menu' title='Debug' icon='fa-cog'><i class='fa fa-bug fa-lg'></i></div></li>"+
+                            "<li><div id='finalCode' class='menu' title='Copy all code' icon='fa-copy'><i class='fa fa-copy fa-lg'></i></div></li>"+
+                            "<li><div id='sendToGist' class='menu' title='Send to Gist' icon='fa-github'><i class='fa fa-github fa-lg'></i></div></li>"+
+                            "<li><div id='hidePlayerURL' class='switch active menu' title='Player URL' icon='fa-check'><i class='fa fa-link fa-lg'></i></div></li>"+
+                            "<li><div id='hideHTML' class='switch active menu' title='HTML' icon='fa-check'><i class='fa fa-code fa-lg'></i></div></li>"+
+                            "<li><div id='hideDescription' class='switch active menu' title='Description' icon='fa-check'><i class='fa fa-list-ul fa-lg'></i></div></li>"+
+                            "<li><div id='editorStyle' class='switch menu' title='Theme' icon='fa-cog'><i class='fa fa-paint-brush fa-lg'></i></div></li>"+
                         "</ul>"+
                     "</nav>"+
                 "</div>"+
             "</div>"+
+
+            "<div class='tooltip'></div>"+
             "<div id='floatingMenu'>"+
-                "<div class='triangle'></div>"+
-                "<ul id=''>"+
+                "<ul id='samples_menu'>"+
+                    "<li><div class='samples_cat' id='sm_Configuration'>Player Configuration</div>"+
+                        "<ul>"+
+                            "<li id='000018'><div class='' id='000018'>Flash Player</div></li>"+
+                            "<li id='000019'><div class='' id='000019'>HTML5 Player</div></li>"+
+                            "<li id='000011'><div class='' id='000011'>Parameters 1</div></li>"+
+                            "<li id='000013'><div class='' id='000013'>Parameters 2</div></li>"+
+                            "<li id='000003'><div class='' id='000003'>Load Dynamically</div></li>"+
+                            "<li id='000015'><div class='' id='000015'>Set Embed Code</div></li>"+
+                            "<li id='000005'><div class='' id='000005'>HTML5 CC</div></li>"+
+                            "<li id='000009'><div class='' id='000009'>Omniture</div></li>"+
+                            "<li id='000010'><div class='' id='000010'>Player Token</div></li>"+
+                            "<li id='000022'><div class='' id='000021'>Responsive Player </div></li>"+
+                        "</ul>"+    
+                    "</li>"+
+                    "<li><div class='samples_cat' id='sm_Interaction'>Player Interaction</div>"+
+                        "<ul>"+
+                            "<li id='000016'><div class='' id='000016'>Set Volume</div></li>"+
+                            "<li id='000014'><div class='' id='000014'>Replay</div></li>"+
+                            "<li id='000001'><div class='' id='000001'>CC select language</div></li>"+
+                            "<li id='000020'><div class='' id='000020'>HTML5 Facebook/Twitter buttons</div></li>"+
+                            "<li id='000004'><div class='' id='000004'>Fullscreen</div></li>"+
+                            "<li id='000007'><div class='' id='000007'>Intercept</div></li>"+
+                            "<li id='000002'><div class='' id='000002'>Destroy</div></li>"+
+                        "</ul>"+
+                    "</li>"+
+                    "<li><div class='samples_cat' id='sm_Monetization'>Monetization</div>"+
+                        "<ul>"+
+                            "<li id='000012'><div class='' id='000012'>VAST</div></li>"+
+                            "<li id='000006'><div class='' id='000006'>Google IMA</div></li>"+
+                            "<li id='000017><div class='' id='000017'>VPAID</div></li>"+
+                            "<li id='000008'><div class='' id='000008'>LiveRail</div></li>"+
+                        "</ul>"+
+                    "</li>"+
                 "</ul>"+
-            "</div>");            
+            "</div>"+
+            "<div id='floatingMenu_2'></div>"+
+            "<div class='triangle'></div>"
+            );
+// "<div class='triangle'></div>"+
     },
 
     // Creates playerURLOptions dropdown used to update the player URL
@@ -219,8 +260,40 @@ var OOSamples = {
 
         selectControl.appendTo('#comboLabel');
 
+    },
+
+    getStyleCookie: function(){
+        var cookies = document.cookie.split(';');
+        
+        for (var i=0;i<cookies.length;i++){
+            if (cookies[i].indexOf('style')==0){
+                this.visualStyle = cookies[i].split('=')[1];
+                this.setEditorStyle();
+                return;
+            }
+        }
+        this.visualStyle = "blackboard";
+        document.cookie ="style=blackboard; expires=Mon, 30 Jul 2018 11:00:00 UTC; path=/"
+    },
+
+    setEditorStyle: function(){
+        var background_color = (this.visualStyle == 'base16-light')? "#f5f5f5":"#0C1021";
+        var color = (this.visualStyle == 'base16-light')? "#888":"#eee";
+        var font_weight = (this.visualStyle == 'base16-light')? "200":"lighter";
+        
+        $(".container-west, .editors .editorHolder").css({"background-color":background_color,"color":color});
+        $("h4").css({"font-weight":font_weight,"color":color});
+
+        OOSamples.playerCode.editor.setOption("theme", this.visualStyle);
+        OOSamples.playerURL.editor.setOption("theme", this.visualStyle);
+        OOSamples.HTMLCode.editor.setOption("theme", this.visualStyle);
+        OOSamples.finalCode.editor.setOption("theme", this.visualStyle);
+
+        document.cookie ="style="+this.visualStyle;
     }
 };// OOSamples end 
+
+
 
 
 /* PLAYER URL EDITOR */
@@ -284,6 +357,11 @@ function JSEditor(val,width,height,UIElement){
     };
     this.loadPrettyCode = function(){
         this.editor.setValue(beautifyCode.JS(this.code()));
+    };
+    this.debug = function(){
+        alert('The debug function will only work on Google Chrome.')
+        var codeToDebug = this.editor.getValue().concat('\n\n').concat('//# sourceURL=dynamicOoyalaPlayerCode.js');
+        this.editor.setValue(codeToDebug);
     }
 }
 
@@ -326,17 +404,17 @@ function FinalEditor(val,width,height,UIElement){
         if (this.hidden){
             $("#javascriptEditor").hide();
             $("#finalEditor").show();
-            $("#finalCode").html("Edit Code");
-            $("#controlsHolder ul li div").css({"color":"#666"});
-            $("#finalCode").css({"color":"#bbb"});
+            $("#finalCode i").removeClass("fa-copy").addClass("fa-times-circle");
+            $("#controlsHolder ul li div").css({"color":"#777"});
+            $("#finalCode").css({"color":"#eee"});
 
             this.editor.setValue("<script src='"+OOSamples.playerURL.code()+"'></script>\n"+
                  "<script>\n"+OOSamples.playerCode.code()+"\n</script>\n\n"+OOSamples.HTMLCode.code());
         }else{
             $("#finalEditor").hide();
             $("#javascriptEditor").show();
-            $("#finalCode").html("Copy Code");
-            $("#controlsHolder ul li div").css({"color":"#bbb"});
+            $("#finalCode i").removeClass("fa-times-circle").addClass("fa-copy");
+            $("#controlsHolder ul li div").css({"color":"#eee"});
         }
         this.hidden = !this.hidden;
     };
@@ -552,63 +630,68 @@ $(document).on("click","#hidePlayerURL",function(){
 
 $(document).on("click","#sendToGist",function(){
     if (OOSamples.finalCode.hidden){
-        sendToGist();
+        var gistURL ="";
+        $("#floatingMenu_2").html("<div class='exportGist'>"+
+        "<p>Export script as public Gist:</p>"+
+        "<p><input type='text' id='gistTitle' placeholder='Title'></p>"+
+        "<p><textarea type='text' id='gistDescription' placeholder='Description' rows='4'></textarea></p>"+
+        "<p id='gistURL'></p>"+
+        "<p><div id='cancelGist' class='button'><div>Close</div></div><div id='exportGist' class='button'><div>Export</div></div></p>"+
+        "</div>");
+        var position = $("#sendToGist").offset();
+        $(".triangle").css({"top":position.top,"display":"block"});
+        $("#floatingMenu_2").show();
+        if (OOSamples.gistURL != ""){
+            $("#gistURL").html("Your code has been sent to Gist:<br>"+OOSamples.gistURL);
+        }
     }
 });
 
-$(document).on("click","#moreSamples",function(){
+$(document).on("click","#cancelGist",function(){
+    $("#floatingMenu_2").html("").hide();
+    $(".triangle").hide();
+});
+
+$(document).on("click","#exportGist",function(){
+    exportToGist();
+});
+
+$(document).on("click","#editorStyle",function(){
+    OOSamples.visualStyle = (OOSamples.visualStyle == 'base16-light')? 'blackboard' : 'base16-light';
+    OOSamples.setEditorStyle();
+});
+
+$(document).on("click","#debugCode",function(){
+    OOSamples.playerCode.debug();
+});
+
+// Displays tooltip with title on the menu buttons
+$(document).on("mouseenter",".menu",function(){
     if (OOSamples.finalCode.hidden){
-        if ($("#samples_menu").is(':visible') == true){
-            $("#samples_menu").slideUp("slow");
-            $("#floatingMenu").hide();
-        }else
-            $("#samples_menu").slideDown("slow");
+        var position = $(this).offset();
+        $(".tooltip").css({'position':'fixed','top':position.top, 'left':35,'display':'block'});
+        $(".tooltip").html($(this).attr('title'));
     }
-
 });
 
-$(document).on("mouseover","#sm_Configuration",function(){
-    $("#floatingMenu").show();
-    $("#floatingMenu .triangle").offset({ top: 122, left: 137 });
-    $("#floatingMenu ul").html("<li><div class='' id='000018'>Flash Player</div></li>"+
-                    "<li><div class='' id='000019'>HTML5 Player</div></li>"+
-                    "<li><div class='' id='000011'>Parameters 1</div></li>"+
-                    "<li><div class='' id='000013'>Parameters 2</div></li>"+
-                    "<li><div class='' id='000003'>Load Dynamically</div></li>"+
-                    "<li><div class='' id='000015'>Set Embed Code</div></li>"+
-                    "<li><div class='' id='000005'>HTML5 CC</div></li>"+
-                    "<li><div class='' id='000001'>Flash CC</div></li>"+
-                    "<li><div class='' id='000005'>HTML5 Facebook/Twitter buttons</div></li>"+
-                    "<li><div class='' id='000009'>Omniture</div></li>"+
-                    "<li><div class='' id='000010'>Player Token</div></li>");
+$(document).on("mouseleave",".menu",function(){
+    $(".tooltip").hide();
 });
 
-$(document).on("mouseover","#sm_Interaction",function(){
-    $("#floatingMenu").show();
-    $("#floatingMenu .triangle").offset({ top: 167, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='' id='000016'>Set Volume</div></li>"+
-                    "<li><div class='' id='000014'>Replay</div></li>"+
-                    "<li><div class='' id='000004'>Fullscreen</div></li>"+
-                    "<li><div class='' id='000007'>Intercept</div></li>"+
-                    "<li><div class='' id='000002'>Destroy</div></li>");
-});
-
-$(document).on("mouseover","#sm_Monetization",function(){
-    $("#floatingMenu").show();
-    $("#floatingMenu .triangle").offset({ top: 210, left: 137 });
-    $("#floatingMenu ul").html( "<li><div class='' id='000012'>VAST</div></li>"+
-                    "<li><div class='' id='000006'>Google IMA</div></li>"+
-                    "<li><div class='' id='000017'>VPAID</div></li>"+
-                    "<li><div class='' id='000008'>LiveRail</div></li>");
-    
-});
-
-$(document).on("click","#floatingMenu ul li div",function(){
+//Redirects to the URL with the sample
+$(document).on("click","#floatingMenu ul li",function(){
     window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"));
 });
 
+// Displays Samples menu
+$(document).on("click","#moreSamples",function(){
+    if (OOSamples.finalCode.hidden){
+        $("#floatingMenu").show();
+    }
+});
+
+//Hide Sample's menu when clicking on any element.
 $(document).on("click","div",function(evt){
-// $('div').click(function(evt){    
     if(evt.target.className == "samples_cat")
         return;
 
@@ -620,36 +703,48 @@ $(document).on("click","div",function(evt){
 
 
     if ($("#samples_menu").is(':visible') == true){
-        $("#samples_menu").slideUp("slow");
+        // $("#samples_menu").slideUp("slow");
         $("#floatingMenu").hide();
+    }
+
+    if ($(".tooltip").is(':visible') == true){
+        $(".tooltip").hide();
     }
 });
 
-function sendToGist(){
-   var data = {
-        "description": "posting gist test",
-        "public": true,
-        "files": {
-          "test.txt": {
-                  "content": "<script src='"+OOSamples.playerURL.code()+"'></script>\n"+
-                     "<script>\n"+OOSamples.playerCode.code()+"\n</script>\n\n"+OOSamples.HTMLCode.code()
-          }
-        }
-      }
+function exportToGist(){
+    var gistTitle = $("#gistTitle").val();
+    var gistDescription = $("#gistDescription").val();
 
-  $.ajax({
-    url: 'https://api.github.com/gists',
-    type: 'POST',
-    dataType: 'json',
-    data: JSON.stringify(data)
-  })
-  .success( function(e) {
-    console.log(e);
-    alert("Your code has been sent to Gist:\n\n"+e.html_url)
-  })
-  .error( function(e) {
-    console.warn("Gist save error", e);
-  });
-  
-   
+    var data = {
+        "description": $("#gistDescription").val(),
+        "public": true,
+        "files": {}
+    }
+
+    // Adds Gist title and description
+    data.files[gistTitle]=   {
+        "content": "<script src='"+OOSamples.playerURL.code()+"'></script>\n"+
+        "<script>\n"+OOSamples.playerCode.code()+"\n</script>\n\n"+OOSamples.HTMLCode.code()
+    }
+
+var x=0;
+    $.ajax({
+        url: 'https://api.github.com/gists',
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(data)
+    })
+    .success( function(e) {
+        console.log(e);
+        OOSamples.gistURL = e.html_url;
+        $("#gistURL").html("Your code has been sent to Gist:<br>"+OOSamples.gistURL);
+        // alert("Your code has been sent to Gist:\n\n"+e.html_url)
+    })
+    .error( function(e) {
+        console.warn("Gist save error", e);
+    });  
 }
+
+
+// http://layout.jquery-dev.com/

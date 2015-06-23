@@ -1,0 +1,15 @@
+[
+	{
+		"title": "HTML5 Player with Title and Description",
+
+		"player_id": "d3cf86763d9049329ffc74fb94b794b8?platform=html5-priority",
+
+		"player_code": "var ooplayer;OO.ready(function(){ooplayer=OO.Player.create('ooyalaplayer','JqaGxndTrTciQQ3Yjt_rg2wI8A1Z5lyF')});OO.plugin('SampleUIModule',function(OO,_,$,W){var Plugin={};Plugin.SampleUIModule=function(mb,id){this.mb=mb;this.id=id;this.init()};Plugin.SampleUIModule.prototype={init:function(){this.mb.subscribe(OO.EVENTS.PLAYER_CREATED,'customerUi',_.bind(this.onPlayerCreate,this));this.mb.subscribe(OO.EVENTS.CONTENT_TREE_FETCHED,'customerUi',_.bind(this.onContentTreeFetched,this))},onPlayerCreate:function(event,elementId,params){this.playerRoot=$('#'+elementId);this.playerRoot.find('.oo_promo').append(\"<div class='oo_title_container'><div class='oo_video_title'></div><div class='oo_video_description'></div></div>\");$('.oo_video_title').html(ooplayer.getTitle());$('.oo_video_description').html(ooplayer.getDescription())},onContentTreeFetched:function(event,content){},__end_marker:true};return Plugin.SampleUIModule});",
+
+		"HTML_items": "<div id='ooyalaplayer'style='width:640px;height:360px'></div><style type='text/css'>.oo_title_container{position:absolute;left:0;top:0;height:100px;width:100%;color:white;background-color:rgba(0,0,0,0.8);line-height:1}.oo_video_title{font-size:25px;font-family:Arial;margin:10px}.oo_video_description{font-size:15px;font-family:Arial;margin:10px}</style>",
+
+		"description_items": "<li>HTML5 Player with Title and Description on start screen.</li><li>The Title and Description data is pulled using the Player API functions getTitle() and getDescription()</li><li><a htref='http://support.ooyala.com/developers/documentation/concepts/player_v3_dev_assets.html' target='blank'> Player API documentation.</a></li><li><a htref='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_module.html' target='blank'> Custom Client Modules for HTML5 Player documentation.</a></li>",
+
+		"instructions_items":""
+	}
+]

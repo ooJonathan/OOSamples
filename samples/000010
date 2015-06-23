@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Ooyala Player Token",
+		"title": "Ooyala Player Token Sample",
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Token-based authentication is one of the supported playback authorization solutions offered by Ooyala.</li><li>The <a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_tokenexpire.html' target='blank'>expiration date</a> must be set to some point in the future and must be the same on the token and signature.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html' target='blank'>Ooyala Player Token documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authparts.html' targe='blank'>Values used to create the Token</a></li>"
+		"description_items": "<li>Token-based authentication is one of the supported playback authorization solutions offered by Ooyala.</li><li>The <a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_tokenexpire.html' target='blank'>expiration date</a> must be set to some point in the future and must be the same for the token and signature.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html' target='blank'>Ooyala Player Token documentation.</a></li><li><a href='http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authparts.html' targe='blank'>Values used to create the Token</a></li>",
+
+		"instructions_items":""
 	}
 ]

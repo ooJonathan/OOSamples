@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Destroy player",
+		"title": "Destroy Player",
 		
 		"player_id": "b2ac6ad82ee54ce4970c996a97868fd5",
 
@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Destroy Flash player when <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>played</a> event is triggered.</li><li>Listen to all events and filter them. Only those events different from 'downloading' & 'playheadTimeChanged' will display a message on Console.</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_mbapi.html' target='blank'>Message Bus documentation.</a></li><ul class='instructions'>Instructions:<li>Play video.</li><li>Once the video ends, the player will be destroyed.</li></ul>"
+		"description_items": "<li>Destroy Flash player when <a href='http://support.ooyala.com/developers/documentation/api/player_v3_api_events.html' target='blank'>played</a> event is triggered.</li><li>Listen to all events and filter them. Only those events different from 'downloading' & 'playheadTimeChanged' will display a message on Console.</li><li><a href='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_mbapi.html' target='blank'>Message Bus documentation.</a></li>",
+
+		"instructions_items":"<li>Play the video.</li><li>Once the video ends, the player will be destroyed.</li>"
 	}
 ]

@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Omniture dynamic Report Suite Id",
+		"title": "Omniture Dynamic Report Suite ID",
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>Set the 'Report Suit ID' dynamically.</li><li><a href='http://community.ooyala.com/t5/Developers-Knowledge-Base/Guide-to-Omniture-Integration/ta-p/4285' target='blank'>Omniture documentation.</a></li>"
+		"description_items": "<li>Set the 'Report Suit ID' dynamically.</li><li><a href='http://community.ooyala.com/t5/Developers-Knowledge-Base/Guide-to-Omniture-Integration/ta-p/4285' target='blank'>Omniture documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]

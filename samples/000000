@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>This page will allow you to make changes on the player code and apply them on the fly. The player will be refreshed and will display the changes.</li><li style='list-style:none;'></li><li style='list-style:none;'>What can you do:</li><li>Change the Player Id</li><li>Add parameters to the Player URL.</li><li>Make changes on the code (JavaScript Editor)</li><li>Add HTML code to include buttons for user interaciton.</li><li>Indent your JS code.</li><li>Generates the final, ready to be pasted on your file.</li><li>Supports jQuery syntax.</li>"
+		"description_items":"<li>This page will allow you to make changes to the player code and apply them on the fly. The player will be refreshed and will display the changes.</li><li style='list-style:none;'></li><li style='list-style:none;'>What you can do:</li><li>Change the Player ID.</li><li>Add parameters to the Player URL.</li><li>Make changes to the code using the JavaScript Editor.</li><li>Add HTML code to include buttons for user interaction.</li><li>Indent your JS code.</li><li>Generate the finalized code, ready to be pasted to your file.</li><li>Supports jQuery syntax.</li>",
+
+		"instructions_items":""
 	}
 ]

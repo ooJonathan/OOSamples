@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>The Ad Tag is assigned on the code. The video must have a 'VPAID OPF' Ad Set assigned.</li><li>Additional VPAID options.</li><li><strong>Note:</strong> VPAID Ads only work with the Flash player.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_vpaid.html' target='blank'>VPAID documentation.</a></li>"
+		"description_items": "<li>The Ad Tag is assigned on the code. The video must have a 'VPAID OPF' Ad Set assigned.</li><li>Additional VPAID options.</li><li><strong>Note:</strong> VPAID Ads only work with the Flash player.</li><li><a href='http://support.ooyala.com/developers/documentation/concepts/ads_dev_vpaid.html' target='blank'>VPAID documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]

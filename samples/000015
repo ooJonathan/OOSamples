@@ -1,6 +1,6 @@
 [
 	{
-		"title": "Set Embed Code function",
+		"title": "Set Embed Code Function",
 
 		"player_id": "d3cf86763d9049329ffc74fb94b794b8",
 
@@ -8,6 +8,8 @@
 
 		"HTML_items": "<div id='ooyalaplayer' style='width:640px;height:360px'></div>",
 
-		"description_items": "<li>You can assign a new Ad Set Code.</li><li>Ad Set Codes are available on Backlot. If you don't have them, contact Technical Support and request Ad Set Code.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>Set Embed Code documentation.</a></li><ul class='instructions'>Instructions:<li>Play the video.</li><li>Click 'New Ad Set Code' button.</li><li>A different ad will be set for the same video.</li></ul>"
+		"description_items": "<li>You can assign a new Ad Set Code.</li><li>Ad Set Codes are available on Backlot. If you don't have them, contact Technical Support and request Ad Set Code.</li><li><a href='http://support.ooyala.com/developers/documentation/reference/player_v3_dev_adset_embed.html' target='blank'>Set Embed Code documentation.</a></li>",
+
+		"instructions_items":"<li>Play the video.</li><li>Click 'New Ad Set Code' button.</li><li>A different ad will be set for the same video.</li>"
 	}
 ]

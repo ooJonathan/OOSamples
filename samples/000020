@@ -8,7 +8,9 @@
 
 		"HTML_items": "<div id='ooyalaplayer'style='width:640px;height:360px'></div><style type='text/css'>.oo_share_container{position:absolute;left:0;top:0;height:45px;width:135px;z-index:999999}\n.oo_sms{width:30px;height:30px;display:inline-block;float:left;text-indent:-9999px;margin:5px;background:url('samples/extra_files/social_icons.png')no-repeat}\n.oo_fb_share{background-position:0 -180px}\n.oo_fb_share:hover{background-position:-30px -180px}\n.oo_tw_share{background-position:0 0}\n.oo_tw_share:hover{background-position:-30px 0}\n.oo_embed_share{background-position:0-90px}.oo_embed_share:hover{background-position:-30px-90px}</style>",
 
-		"description_items": "<li>HTML5 Player with Facebook and Twitter buttons.</li><li>The sharing buttons will show/hide at the same time as the scrubber bar.</li><li>The icons are loaded from the following image: <a htref='samples/extra_files/social_icons.png' target='blank'> social Media icons.</a></li><li><a htref='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_module.html' target='blank'> Custom Client Modules for HTML5 Player documentation.</a></li>"
+		"description_items": "<li>HTML5 Player with Facebook and Twitter buttons.</li><li>The sharing buttons will show/hide at the same time as the scrubber bar.</li><li>The icons are loaded from the following image: <a htref='samples/extra_files/social_icons.png' target='blank'> social Media icons.</a></li><li><a htref='http://support.ooyala.com/developers/users/documentation/reference/player_v3_dev_module.html' target='blank'> Custom Client Modules for HTML5 Player documentation.</a></li>",
+
+		"instructions_items":""
 	}
 ]
 
