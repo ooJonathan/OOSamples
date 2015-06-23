@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.3
+    Version: 1.0.4
 
     Code is organized as follows:
     
@@ -680,7 +680,14 @@ $(document).on("mouseleave",".menu",function(){
 
 //Redirects to the URL with the sample
 $(document).on("click","#floatingMenu ul li",function(){
-    window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"));
+    if ($(this).attr("id") != undefined)
+        window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"));
+
+    // var x = $(this).attr("id");
+    // var d = window.location.origin+ window.location.pathname+"?id="+x;
+    // console.log(x);
+    // window.location.replace(x);
+
 });
 
 // Displays Samples menu
