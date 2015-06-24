@@ -22,4 +22,6 @@
 		Add new theme and use cookies to remember the user selection.
 		Improve Gist export section, now you can add a custom title and description.
 
-1.0.4 - Fix bug. On menu when selecting a sample the Id is 'undefined'. Introduced on 1.0.3. Root cause: The change to get the id from 'li' makes the function to be done twice, the second time the id is 'undefined'. Solution: Validate if the id is 'undefined'.
+1.0.4 - Fix bug introduced on 1.0.3. On menu when selecting a sample the Id is 'undefined'. . Root cause: The change to get the id from 'li' makes the function to be done twice, the second time the id is 'undefined'. Solution: Validate if the id is 'undefined'.
+
+1.0.5 - Fix bug introduced on 1.0.4. VPAID menu option was missing a quote.

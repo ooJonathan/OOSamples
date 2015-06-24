@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.4
+    Version: 1.0.5
 
     Code is organized as follows:
     
@@ -228,7 +228,7 @@ var OOSamples = {
                         "<ul>"+
                             "<li id='000012'><div class='' id='000012'>VAST</div></li>"+
                             "<li id='000006'><div class='' id='000006'>Google IMA</div></li>"+
-                            "<li id='000017><div class='' id='000017'>VPAID</div></li>"+
+                            "<li id='000017'><div class='' id='000017'>VPAID</div></li>"+
                             "<li id='000008'><div class='' id='000008'>LiveRail</div></li>"+
                         "</ul>"+
                     "</li>"+
