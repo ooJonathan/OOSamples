@@ -25,3 +25,7 @@
 1.0.4 - Fix bug introduced on 1.0.3. On menu when selecting a sample the Id is 'undefined'. . Root cause: The change to get the id from 'li' makes the function to be done twice, the second time the id is 'undefined'. Solution: Validate if the id is 'undefined'.
 
 1.0.5 - Fix bug introduced on 1.0.4. VPAID menu option was missing a quote.
+
+1.0.6 - Create function to display controls from menu.
+		Added 'About' menu option.
+		Added link to API Documentation.

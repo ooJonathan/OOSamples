@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.5
+    Version: 1.0.6
 
     Code is organized as follows:
     
@@ -28,6 +28,7 @@ var OOSamples = {
     contentLayout:"",
     visualStyle:"",
     gistURL:"",
+    floatingMenu_callerID:"",
 
     loadData: function(){
         var id = (window.location.search!="")? window.location.search.substr(4) : "000000";
@@ -133,6 +134,7 @@ var OOSamples = {
        $("body").append("<div class='ui-layout-north'>"+
                "<div id='logo-wrapper'><a href='http://www.ooyala.com/' id='logo'><img src='imgs/logo_landingpage.png' alt='Ooyala' class='logo'/></a></div>"+
                 "<h6>Unlocking the true revenue potential of digital TV.</h6>"+
+                "<div id='APIdocumentation' class='button APIbtn'><div><a href='http://apidocs.ooyala.com/' target='blank'>API Documentation</a></div></div>"+
             "</div>"+
             "<div class='ui-layout-center'>"+
                 "<div class='container' style='height:100%;'>"+
@@ -191,50 +193,14 @@ var OOSamples = {
                             "<li><div id='hideHTML' class='switch active menu' title='HTML' icon='fa-check'><i class='fa fa-code fa-lg'></i></div></li>"+
                             "<li><div id='hideDescription' class='switch active menu' title='Description' icon='fa-check'><i class='fa fa-list-ul fa-lg'></i></div></li>"+
                             "<li><div id='editorStyle' class='switch menu' title='Theme' icon='fa-cog'><i class='fa fa-paint-brush fa-lg'></i></div></li>"+
+                            "<li><div id='aboutBtn' class='menu' title='About' icon='fa-info-circle'><i class='fa fa-info-circle fa-lg'></i></div></li>"+
                         "</ul>"+
                     "</nav>"+
                 "</div>"+
             "</div>"+
 
             "<div class='tooltip'></div>"+
-            "<div id='floatingMenu'>"+
-                "<ul id='samples_menu'>"+
-                    "<li><div class='samples_cat' id='sm_Configuration'>Player Configuration</div>"+
-                        "<ul>"+
-                            "<li id='000018'><div class='' id='000018'>Flash Player</div></li>"+
-                            "<li id='000019'><div class='' id='000019'>HTML5 Player</div></li>"+
-                            "<li id='000011'><div class='' id='000011'>Parameters 1</div></li>"+
-                            "<li id='000013'><div class='' id='000013'>Parameters 2</div></li>"+
-                            "<li id='000003'><div class='' id='000003'>Load Dynamically</div></li>"+
-                            "<li id='000015'><div class='' id='000015'>Set Embed Code</div></li>"+
-                            "<li id='000005'><div class='' id='000005'>HTML5 CC</div></li>"+
-                            "<li id='000009'><div class='' id='000009'>Omniture</div></li>"+
-                            "<li id='000010'><div class='' id='000010'>Player Token</div></li>"+
-                            "<li id='000022'><div class='' id='000021'>Responsive Player </div></li>"+
-                        "</ul>"+    
-                    "</li>"+
-                    "<li><div class='samples_cat' id='sm_Interaction'>Player Interaction</div>"+
-                        "<ul>"+
-                            "<li id='000016'><div class='' id='000016'>Set Volume</div></li>"+
-                            "<li id='000014'><div class='' id='000014'>Replay</div></li>"+
-                            "<li id='000001'><div class='' id='000001'>CC select language</div></li>"+
-                            "<li id='000020'><div class='' id='000020'>HTML5 Facebook/Twitter buttons</div></li>"+
-                            "<li id='000004'><div class='' id='000004'>Fullscreen</div></li>"+
-                            "<li id='000007'><div class='' id='000007'>Intercept</div></li>"+
-                            "<li id='000002'><div class='' id='000002'>Destroy</div></li>"+
-                        "</ul>"+
-                    "</li>"+
-                    "<li><div class='samples_cat' id='sm_Monetization'>Monetization</div>"+
-                        "<ul>"+
-                            "<li id='000012'><div class='' id='000012'>VAST</div></li>"+
-                            "<li id='000006'><div class='' id='000006'>Google IMA</div></li>"+
-                            "<li id='000017'><div class='' id='000017'>VPAID</div></li>"+
-                            "<li id='000008'><div class='' id='000008'>LiveRail</div></li>"+
-                        "</ul>"+
-                    "</li>"+
-                "</ul>"+
-            "</div>"+
-            "<div id='floatingMenu_2'></div>"+
+            "<div id='floatingMenu'></div>"+
             "<div class='triangle'></div>"
             );
 // "<div class='triangle'></div>"+
@@ -590,6 +556,7 @@ var beautifyCode = {
     }
 }// beautify ends
 
+
 /* UI CONTROL'S FUNCTIONS */
 
 $(document).on("click","#launchPlayer",function(){
@@ -629,21 +596,70 @@ $(document).on("click","#hidePlayerURL",function(){
 });
 
 $(document).on("click","#sendToGist",function(){
-    if (OOSamples.finalCode.hidden){
         var gistURL ="";
-        $("#floatingMenu_2").html("<div class='exportGist'>"+
+        showFloatingMenu("sendToGist","<div class='exportGist floatingContent'>"+
         "<p>Export script as public Gist:</p>"+
         "<p><input type='text' id='gistTitle' placeholder='Title'></p>"+
         "<p><textarea type='text' id='gistDescription' placeholder='Description' rows='4'></textarea></p>"+
         "<p id='gistURL'></p>"+
         "<p><div id='cancelGist' class='button'><div>Close</div></div><div id='exportGist' class='button'><div>Export</div></div></p>"+
-        "</div>");
-        var position = $("#sendToGist").offset();
-        $(".triangle").css({"top":position.top,"display":"block"});
-        $("#floatingMenu_2").show();
+        "</div>","294px","200px");
         if (OOSamples.gistURL != ""){
             $("#gistURL").html("Your code has been sent to Gist:<br>"+OOSamples.gistURL);
         }
+});
+
+$(document).on("click","#aboutBtn",function(){
+    showFloatingMenu("aboutBtn","<div class='floatingContent'>"+
+            "<p>© 2015 Ooyala, Inc. • Website Privacy Policy • Terms of Service • All Rights Reserved</p>"+
+            "</div>","280px","70px");
+});
+
+
+$(document).on("click","#moreSamples",function(){
+    showFloatingMenu("moreSamples","<ul id='samples_menu'>"+
+                    "<li><div class='samples_cat' id='sm_Configuration'>Player Configuration</div>"+
+                        "<ul>"+
+                            "<li id='000018'><div class='' id='000018'>Flash Player</div></li>"+
+                            "<li id='000019'><div class='' id='000019'>HTML5 Player</div></li>"+
+                            "<li id='000011'><div class='' id='000011'>Parameters 1</div></li>"+
+                            "<li id='000013'><div class='' id='000013'>Parameters 2</div></li>"+
+                            "<li id='000003'><div class='' id='000003'>Load Dynamically</div></li>"+
+                            "<li id='000015'><div class='' id='000015'>Set Embed Code</div></li>"+
+                            "<li id='000005'><div class='' id='000005'>HTML5 CC</div></li>"+
+                            "<li id='000009'><div class='' id='000009'>Omniture</div></li>"+
+                            "<li id='000010'><div class='' id='000010'>Player Token</div></li>"+
+                            "<li id='000022'><div class='' id='000021'>Responsive Player </div></li>"+
+                        "</ul>"+    
+                    "</li>"+
+                    "<li><div class='samples_cat' id='sm_Interaction'>Player Interaction</div>"+
+                        "<ul>"+
+                            "<li id='000016'><div class='' id='000016'>Set Volume</div></li>"+
+                            "<li id='000014'><div class='' id='000014'>Replay</div></li>"+
+                            "<li id='000001'><div class='' id='000001'>CC select language</div></li>"+
+                            "<li id='000020'><div class='' id='000020'>HTML5 Facebook/Twitter buttons</div></li>"+
+                            "<li id='000004'><div class='' id='000004'>Fullscreen</div></li>"+
+                            "<li id='000007'><div class='' id='000007'>Intercept</div></li>"+
+                            "<li id='000002'><div class='' id='000002'>Destroy</div></li>"+
+                        "</ul>"+
+                    "</li>"+
+                    "<li><div class='samples_cat' id='sm_Monetization'>Monetization</div>"+
+                        "<ul>"+
+                            "<li id='000012'><div class='' id='000012'>VAST</div></li>"+
+                            "<li id='000006'><div class='' id='000006'>Google IMA</div></li>"+
+                            "<li id='000017'><div class='' id='000017'>VPAID</div></li>"+
+                            "<li id='000008'><div class='' id='000008'>LiveRail</div></li>"+
+                        "</ul>"+
+                    "</li>"+
+                "</ul>","80px","70px");
+});
+
+//Hide Sample's menu when clicking on any element.
+$(document).on("click","div",function(evt){
+    hideFloatingMenu(evt);
+
+    if ($(".tooltip").is(':visible') == true){
+        $(".tooltip").hide();
     }
 });
 
@@ -681,42 +697,7 @@ $(document).on("mouseleave",".menu",function(){
 //Redirects to the URL with the sample
 $(document).on("click","#floatingMenu ul li",function(){
     if ($(this).attr("id") != undefined)
-        window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"));
-
-    // var x = $(this).attr("id");
-    // var d = window.location.origin+ window.location.pathname+"?id="+x;
-    // console.log(x);
-    // window.location.replace(x);
-
-});
-
-// Displays Samples menu
-$(document).on("click","#moreSamples",function(){
-    if (OOSamples.finalCode.hidden){
-        $("#floatingMenu").show();
-    }
-});
-
-//Hide Sample's menu when clicking on any element.
-$(document).on("click","div",function(evt){
-    if(evt.target.className == "samples_cat")
-        return;
-
-    if(evt.target.id == "moreSamples")
-        return;
-
-    if($(evt.target).closest('.samples_cat, #moreSamples').length)
-        return;     
-
-
-    if ($("#samples_menu").is(':visible') == true){
-        // $("#samples_menu").slideUp("slow");
-        $("#floatingMenu").hide();
-    }
-
-    if ($(".tooltip").is(':visible') == true){
-        $(".tooltip").hide();
-    }
+        window.location.replace(window.location.origin+ window.location.pathname+"?id="+$(this).attr("id"),'_blank');
 });
 
 function exportToGist(){
@@ -746,11 +727,37 @@ var x=0;
         console.log(e);
         OOSamples.gistURL = e.html_url;
         $("#gistURL").html("Your code has been sent to Gist:<br>"+OOSamples.gistURL);
-        // alert("Your code has been sent to Gist:\n\n"+e.html_url)
     })
     .error( function(e) {
         console.warn("Gist save error", e);
     });  
+}
+
+function showFloatingMenu(callerID, HTML, width, height){
+    if (OOSamples.finalCode.hidden){
+        OOSamples.floatingMenu_callerID = callerID
+        $("#floatingMenu").html(HTML);
+        var position = $("#"+callerID).offset();
+        $("#floatingMenu").css({"top":position.top,"display":"block","width":width,"height":height});
+        $(".triangle").css({"top":position.top+5,"display":"block"});
+        $("#floatingMenu").show();
+    }
+}
+
+function hideFloatingMenu(evt){
+    if ((evt.target.className == "floatingContent")||(evt.target.className == "samples_cat"))
+        return;
+
+    if(evt.target.id == OOSamples.floatingMenu_callerID)
+        return;
+
+    if($(evt.target).closest('.floatingContent, .samples_cat, #'+OOSamples.floatingMenu_callerID).length)
+        return;
+
+    if ($("#floatingMenu").is(':visible') == true){
+        $("#floatingMenu").hide();
+        $(".triangle").hide();
+    }    
 }
 
 

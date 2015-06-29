@@ -267,13 +267,13 @@ div.ui-layout-west.ui-layout-pane.ui-layout-pane-west{
 
 #floatingMenu{
   display: none;
-  position:absolute;
+  position:fixed;
   top:74px;
-  left:40px;
-  width:0px;
-  /*width:auto;*/
+  left:53px;
+  background-color: #16366B; 
   z-index: 1001;
-  background-color: red;
+width: auto;
+  height: auto;
 }
 
 #floatingMenu ul{
@@ -322,20 +322,11 @@ div.ui-layout-west.ui-layout-pane.ui-layout-pane-west{
   height: 300px;
 }
 
-#floatingMenu_2{
-  display: block;
-  background-color: #16366B; 
-  width: auto;
-  height: auto;
-  position: fixed;
-  top:294px;
-  left:53px;
-  z-index: 1001;
-}
 
 
 
-.exportGist{
+
+.floatingContent{
   font-family: TradeGothic, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: lighter;
   font-size: 13px;
@@ -360,8 +351,13 @@ div.ui-layout-west.ui-layout-pane.ui-layout-pane-west{
   float: right;
 }
 
-.button div{
+.button div, .button div a{
   padding: 10px;
   text-align: center;
+  text-decoration: none;
+  color: #eee;
+}
 
+.APIbtn{
+  margin: 6px 15px 0px 0px;
 }
