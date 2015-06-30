@@ -29,3 +29,5 @@
 1.0.6 - Create function to display controls from menu.
 		Added 'About' menu option.
 		Added link to API Documentation.
+
+1.0.7 - Add name 'Ooyala Playground'

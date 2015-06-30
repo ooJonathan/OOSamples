@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.6
+    Version: 1.0.7
 
     Code is organized as follows:
     
@@ -132,8 +132,8 @@ var OOSamples = {
     // Page template
     contentTemplate: function(){
        $("body").append("<div class='ui-layout-north'>"+
-               "<div id='logo-wrapper'><a href='http://www.ooyala.com/' id='logo'><img src='imgs/logo_landingpage.png' alt='Ooyala' class='logo'/></a></div>"+
-                "<h6>Unlocking the true revenue potential of digital TV.</h6>"+
+               "<div id='logo-wrapper'><a href='http://www.ooyala.com/' id='logo'><img src='imgs/logo_landingpage.png' alt='Ooyala' class='logo'/></a> <h1>PLAYGROUND</h1></div>"+
+                "<h6>Code and play like never before.</h6>"+
                 "<div id='APIdocumentation' class='button APIbtn'><div><a href='http://apidocs.ooyala.com/' target='blank'>API Documentation</a></div></div>"+
             "</div>"+
             "<div class='ui-layout-center'>"+
