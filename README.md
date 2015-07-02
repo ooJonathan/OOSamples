@@ -16,7 +16,6 @@
 
 1.0.3 - Move 'Flash CC' & 'HTML5 Facebook/Twitter buttons' samples to 'Player interaction' menu.
 		Add "instructions_items":"" to sample files (JSON). On OOSamples.js add a validation to display "Instructions" as a title when there are instructions, if not it will not be displayed.
-		Fix Grammar as James indicated.
 		Revamp menu bar: Reduce size, add icons, Sample's menu.
 		Change color on highlited menu items from #172C54 to #16366B.
 		Add new theme and use cookies to remember the user selection.
@@ -31,3 +30,7 @@
 		Added link to API Documentation.
 
 1.0.7 - Add name 'Ooyala Playground'
+
+1.0.8 - Add '?debug=true' to player URL to get same logs as debug.ooyala.com
+		Replace 'title' with 'tooltip' on the menu Tooltips to avoide having the built-in title displayed.
+		Player URL validations now allows staging URL (player-staging.ooyala.com).

@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.7
+    Version: 1.0.8
 
     Code is organized as follows:
     
@@ -183,17 +183,17 @@ var OOSamples = {
                 "<div id='controlsHolder'>"+
                     "<nav>"+
                         "<ul>"+
-                            "<li><div id='moreSamples' class='menu' title='Samples' icon='fa-navicon'><i class='fa fa-navicon fa-lg'></i></div></li>"+
-                            "<li><div id='launchPlayer' class='menu' title='Run' icon='fa-play'><i class='fa fa-play fa-lg'></i></div></li>"+
-                            "<li><div id='prettifyCode' class='menu' title='Prettify' icon='fa-magic'><i class='fa fa-magic fa-lg'></i></div></li>"+
-                            "<li><div id='debugCode' class='switch menu' title='Debug' icon='fa-cog'><i class='fa fa-bug fa-lg'></i></div></li>"+
-                            "<li><div id='finalCode' class='menu' title='Copy all code' icon='fa-copy'><i class='fa fa-copy fa-lg'></i></div></li>"+
-                            "<li><div id='sendToGist' class='menu' title='Send to Gist' icon='fa-github'><i class='fa fa-github fa-lg'></i></div></li>"+
-                            "<li><div id='hidePlayerURL' class='switch active menu' title='Player URL' icon='fa-check'><i class='fa fa-link fa-lg'></i></div></li>"+
-                            "<li><div id='hideHTML' class='switch active menu' title='HTML' icon='fa-check'><i class='fa fa-code fa-lg'></i></div></li>"+
-                            "<li><div id='hideDescription' class='switch active menu' title='Description' icon='fa-check'><i class='fa fa-list-ul fa-lg'></i></div></li>"+
-                            "<li><div id='editorStyle' class='switch menu' title='Theme' icon='fa-cog'><i class='fa fa-paint-brush fa-lg'></i></div></li>"+
-                            "<li><div id='aboutBtn' class='menu' title='About' icon='fa-info-circle'><i class='fa fa-info-circle fa-lg'></i></div></li>"+
+                            "<li><div id='moreSamples' class='menu' tooltip='Samples' icon='fa-navicon'><i class='fa fa-navicon fa-lg'></i></div></li>"+
+                            "<li><div id='launchPlayer' class='menu' tooltip='Run' icon='fa-play'><i class='fa fa-play fa-lg'></i></div></li>"+
+                            "<li><div id='prettifyCode' class='menu' tooltip='Prettify' icon='fa-magic'><i class='fa fa-magic fa-lg'></i></div></li>"+
+                            "<li><div id='debugCode' class='switch menu' tooltip='Debug' icon='fa-cog'><i class='fa fa-bug fa-lg'></i></div></li>"+
+                            "<li><div id='finalCode' class='menu' tooltip='Copy all code' icon='fa-copy'><i class='fa fa-copy fa-lg'></i></div></li>"+
+                            "<li><div id='sendToGist' class='menu' tooltip='Send to Gist' icon='fa-github'><i class='fa fa-github fa-lg'></i></div></li>"+
+                            "<li><div id='hidePlayerURL' class='switch active menu' tooltip='Player URL' icon='fa-check'><i class='fa fa-link fa-lg'></i></div></li>"+
+                            "<li><div id='hideHTML' class='switch active menu' tooltip='HTML' icon='fa-check'><i class='fa fa-code fa-lg'></i></div></li>"+
+                            "<li><div id='hideDescription' class='switch active menu' tooltip='Description' icon='fa-check'><i class='fa fa-list-ul fa-lg'></i></div></li>"+
+                            "<li><div id='editorStyle' class='switch menu' tooltip='Theme' icon='fa-cog'><i class='fa fa-paint-brush fa-lg'></i></div></li>"+
+                            "<li><div id='aboutBtn' class='menu' tooltip='About' icon='fa-info-circle'><i class='fa fa-info-circle fa-lg'></i></div></li>"+
                         "</ul>"+
                     "</nav>"+
                 "</div>"+
@@ -243,6 +243,7 @@ var OOSamples = {
     },
 
     setEditorStyle: function(){
+        logger.start('')
         var background_color = (this.visualStyle == 'base16-light')? "#f5f5f5":"#0C1021";
         var color = (this.visualStyle == 'base16-light')? "#888":"#eee";
         var font_weight = (this.visualStyle == 'base16-light')? "200":"lighter";
@@ -273,7 +274,9 @@ function URLEditor(val,width,height,UIElement){
 
     this.loadURL = function(){
         if (this.evalURL()){
-            $.getScript(this.code(), function(script, textStatus, jqXHR) {
+            var c = (this.code().indexOf("?")!=-1) ? "&":"?";
+            var url = this.code().concat(c).concat("debug=true");
+            $.getScript(url, function(script, textStatus, jqXHR) {
                 OOSamples.playerCode.loadCode();
             });  
         }else
@@ -281,7 +284,7 @@ function URLEditor(val,width,height,UIElement){
     };
 
     this.evalURL = function(){
-        var validPlayerURL = /^(https?:\/\/)?(player\.ooyala\.com\/v3\/)([0-9a-zA-Z\_\-]{32})\??([0-9a-zA-Z\_\-]+\=[0-9a-zA-Z\_\-]+\&?)*$/;
+        var validPlayerURL = /^(https?:\/\/)?(player(\-staging)?\.ooyala\.com\/v3\/)([0-9a-zA-Z\_\-]{32})\??([0-9a-zA-Z\_\-]+\=[0-9a-zA-Z\_\-]+\&?)*$/;
         return (validPlayerURL.test(this.code()))? 1 : 0;
     };
     // Destroy player variables and clear player container
@@ -325,7 +328,13 @@ function JSEditor(val,width,height,UIElement){
         this.editor.setValue(beautifyCode.JS(this.code()));
     };
     this.debug = function(){
-        alert('The debug function will only work on Google Chrome.')
+        // alert('The debug function will only work on Google Chrome.')
+        showFloatingMenu("sendToGist","<div class='floatingContent'>"+
+        "<img scr='' alt='Javascript Source'>"+
+        "<p><div id='cancelGist' class='button'><div>Close</div></div></p>"+
+        "</div>","750px","240px");
+
+
         var codeToDebug = this.editor.getValue().concat('\n\n').concat('//# sourceURL=dynamicOoyalaPlayerCode.js');
         this.editor.setValue(codeToDebug);
     }
@@ -686,7 +695,7 @@ $(document).on("mouseenter",".menu",function(){
     if (OOSamples.finalCode.hidden){
         var position = $(this).offset();
         $(".tooltip").css({'position':'fixed','top':position.top, 'left':35,'display':'block'});
-        $(".tooltip").html($(this).attr('title'));
+        $(".tooltip").html($(this).attr('tooltip'));
     }
 });
 
@@ -760,5 +769,22 @@ function hideFloatingMenu(evt){
     }    
 }
 
-
+var logger = {
+    start: function(m){
+        console.error('START -> ' + m);
+    },
+    end: function(m){
+        console.error('START -> ' + m);  
+    }
+    log: function(m){
+        console.log(m);
+    },
+    assert: function(condition,m){
+        console.assert(condition,m);
+    },
+    error: function(m){
+        console.error(m);
+    }
+}
 // http://layout.jquery-dev.com/
+
