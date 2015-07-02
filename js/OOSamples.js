@@ -775,7 +775,7 @@ var logger = {
     },
     end: function(m){
         console.error('START -> ' + m);  
-    }
+    },
     log: function(m){
         console.log(m);
     },
