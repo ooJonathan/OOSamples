@@ -1,7 +1,7 @@
 /*
     Samples Editor code
     Author: Jonathan Gomez Vazquez 2015
-    Version: 1.0.8
+    Version: 1.0.9
 
     Code is organized as follows:
     
@@ -269,6 +269,7 @@ function URLEditor(val,width,height,UIElement){
                         value: "http://player.ooyala.com/v3/"+val,
                         theme: "blackboard"
                     });
+    this.editor.on('change', function(){ $("#launchPlayer").addClass("changes"); });
     this.editor.setSize(width,height);
     this.code = function(){return this.editor.getValue().trim(); };
 
@@ -300,7 +301,6 @@ function URLEditor(val,width,height,UIElement){
 /* JS EDITOR */
 function JSEditor(val,width,height,UIElement){
     this.editor = CodeMirror(document.getElementById(UIElement), {
-                        // value: formatCode.format(val),
                         value: beautifyCode.JS(val),
                         theme: "blackboard",
                         mode: "javascript",
@@ -327,18 +327,14 @@ function JSEditor(val,width,height,UIElement){
     this.loadPrettyCode = function(){
         this.editor.setValue(beautifyCode.JS(this.code()));
     };
-    this.debug = function(){
+    this.enableDebug = function(){
         // alert('The debug function will only work on Google Chrome.')
-        showFloatingMenu("sendToGist","<div class='floatingContent'>"+
-        "<img scr='' alt='Javascript Source'>"+
-        "<p><div id='cancelGist' class='button'><div>Close</div></div></p>"+
-        "</div>","750px","240px");
-
-
         var codeToDebug = this.editor.getValue().concat('\n\n').concat('//# sourceURL=dynamicOoyalaPlayerCode.js');
         this.editor.setValue(codeToDebug);
     }
 }
+
+
 
 /* HTML EDITOR */
 function HTMLEditor(val,width,height,UIElement){
@@ -350,6 +346,7 @@ function HTMLEditor(val,width,height,UIElement){
         theme: "blackboard",
         autoCloseTags: true
     }); 
+    this.editor.on('change', function(){ $("#launchPlayer").addClass("changes"); });
     this.editor.setSize(width,height);
     this.code = function(){return this.editor.getValue().trim(); };
     this.loadCode = function(){
@@ -611,11 +608,34 @@ $(document).on("click","#sendToGist",function(){
         "<p><input type='text' id='gistTitle' placeholder='Title'></p>"+
         "<p><textarea type='text' id='gistDescription' placeholder='Description' rows='4'></textarea></p>"+
         "<p id='gistURL'></p>"+
-        "<p><div id='cancelGist' class='button'><div>Close</div></div><div id='exportGist' class='button'><div>Export</div></div></p>"+
+        "<p><div id='cancel' class='button'><div>Close</div></div><div id='exportGist' class='button'><div>Export</div></div></p>"+
         "</div>","294px","200px");
         if (OOSamples.gistURL != ""){
             $("#gistURL").html("Your code has been sent to Gist:<br>"+OOSamples.gistURL);
         }
+});
+
+$(document).on("click","#debugCode",function(){
+    showFloatingMenu("debugCode","<div class='floatingContent'>"+
+        "<p><b>Debugging is only supported in Chrome due to browser's limitations.</b></p>"+
+        "<p>1. How to use it:</p>"+
+        "<p>2. Click on ‘Enable’</p>"+
+        "<p>3. The following line will be added at the end of your code on the JavaScript code area:</p>"+
+        "<p><center>//# sourceURL=dynamicOoyalaPlayerCode.js</center></p>"+
+        "<p>4. Run your script.</p>"+
+        "<p>5. Do a right click anywhere and select ‘Inspect Element’. Chrome will open a new panel after this.</p>"+
+        "<p>6. On top Chrome's new panel click on ‘Sources’. </p>"+
+        "<p><img src='imgs/consoleTopOptions.png' alt='Dev Console top options' style='width:442px;'></p>"+
+        "<p>7. On the left side list find ‘no domain’ and expand it.</p>"+
+        "<p>8. Click over ‘dynamicOoyalaPlayerCode.js’.</p>"+
+        "<p><img src='imgs/consoleFilesTree.png' alt='Dev Console where to find dynamic code' style='wi197px'></p>"+
+        "<p>9. Your code will be listed on the middle section of the new panel. Now you can debug it as regular JavaScript adding breakpoints and so on.</li></ul>"+
+        "<p><div id='cancel' class='button'><div>Close</div></div><div id='enableDebug' class='button'><div>Enable</div></div></p>"+
+        "</div>","470px","626px");
+});
+
+$(document).on("click","#aboutBtn",function(){
+   OOSamples.playerCode.enableDebug();
 });
 
 $(document).on("click","#aboutBtn",function(){
@@ -672,8 +692,8 @@ $(document).on("click","div",function(evt){
     }
 });
 
-$(document).on("click","#cancelGist",function(){
-    $("#floatingMenu_2").html("").hide();
+$(document).on("click","#cancel",function(){
+    $("#floatingMenu").html("").hide();
     $(".triangle").hide();
 });
 
@@ -684,10 +704,6 @@ $(document).on("click","#exportGist",function(){
 $(document).on("click","#editorStyle",function(){
     OOSamples.visualStyle = (OOSamples.visualStyle == 'base16-light')? 'blackboard' : 'base16-light';
     OOSamples.setEditorStyle();
-});
-
-$(document).on("click","#debugCode",function(){
-    OOSamples.playerCode.debug();
 });
 
 // Displays tooltip with title on the menu buttons

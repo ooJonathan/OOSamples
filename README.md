@@ -34,3 +34,7 @@
 1.0.8 - Add '?debug=true' to player URL to get same logs as debug.ooyala.com
 		Replace 'title' with 'tooltip' on the menu Tooltips to avoide having the built-in title displayed.
 		Player URL validations now allows staging URL (player-staging.ooyala.com).
+
+1.0.9 - Add Debug option instructions (How to use it).
+		Player URL editor and HTML editor now highliths Run button after something is changed.
+		Fixed bug that didn't close Gist exporting menu when clickin on Close button. (Introduced on 1.0.6).

@@ -361,3 +361,9 @@ width: auto;
 .APIbtn{
   margin: 6px 15px 0px 0px;
 }
+
+#debugInstructions{
+ list-style-type: decimal;
+  margin: 0px;
+  padding: 0px 0px 0px 23px; 
+}
